@@ -5,7 +5,7 @@
 ## Text validation
 
 ```js
-  $('#textFiled').valid("text", options);
+  $('textFileds').valid("text", options);
 ```
 
 Avaliable `options`:
