@@ -21,7 +21,7 @@ $(function() {
         }, 
       "regexp": 
         {
-          "pat": "[A-Z]\\w+"
+          "pat": "^[A-Z]\\w+"
         },
       "onValid": onValid,
       "onNotValid": onNotValid 
@@ -45,12 +45,32 @@ $(function() {
 
   });
 
-
-
   $('#emailInput').keyup(function (){
 
     $("#emailInput").valid("email", 
       { 
+      "onValid": onValid,
+      "onNotValid": onNotValid 
+      });//.css({"background": "red"});
+
+  });
+
+  $('#passwordInput').keyup(function (){
+
+    $("#passwordInput").valid("password", 
+      {     
+        "size":
+        {
+          "min": 8,
+          "max": 32
+        }, 
+        "content":
+        {
+          "small": true,
+          "big": true,
+          "digit": true,
+          "special": true
+        },
       "onValid": onValid,
       "onNotValid": onNotValid 
       });//.css({"background": "red"});

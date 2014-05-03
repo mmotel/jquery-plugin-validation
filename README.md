@@ -155,3 +155,30 @@ Example:
     "onNotValid": onNotValid 
     });
 ```
+
+## Password validation
+
+```js
+  $('passwordFileds').valid("password", options);
+```
+
+Avaliable `options`:
+
+```js
+  {
+    "size":
+    {
+      "min": Int,           //default: 8
+      "max": Int
+    }, 
+    "content":
+    {
+      "small": Boolean,     //default: true 
+      "big": Boolean,       //default: true
+      "digit": Boolean,     //default: true
+      "special": Boolean    //default: false
+    },
+    "onValid": fieldValidHandler,
+    "onNotValid": fieldNotValidhandler
+  }
+```
