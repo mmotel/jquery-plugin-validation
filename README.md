@@ -21,6 +21,8 @@ Avaliable `options`:
     {
       "pat": RegExpPattern,
       "mod": RegExpModifiers
-    }
+    },
+    "onValid": fieldValidHandler,
+    "onNotValid": fieldNotValidhandler
   }
 ```

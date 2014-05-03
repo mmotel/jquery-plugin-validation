@@ -1,5 +1,44 @@
 (function( $ ){
 
+  //!!! wyciągnąć funckję ValidText z methods.text !!!
+
+  var validText = function (that, options) {
+    var value = $(that).val();
+    var err = false;
+    console.log($(that).val());
+
+    if(options.size){
+      if(options.size.min){
+        if(value.length < options.size.min){
+          console.log("size.min err");
+          err = true;
+        }
+      }
+      if(options.size.max){
+        if(value.length > options.size.max){
+          console.log("size.max err");
+          err = true;
+        }
+      }
+    }
+    if(options.regexp && options.regexp.pat){
+      var patt;
+      if(options.regexp.mod){
+        patt = new RegExp(options.regexp.pat, options.regexp.mod);
+      } else{
+        patt = new RegExp(options.regexp.pat);
+      }
+      console.log(patt);
+      if(!patt.test(value)){
+        console.log("regexp err");
+        err = true;
+      }
+    }
+    console.log(err);
+    
+    return err;
+  }
+
   var methods = {
     'init': function ( options ) {
       //init logic
@@ -10,49 +49,14 @@
       console.log(options);
 
       return this.each(function () {
-        // $(this).keyup(function (){ 
+        var isValid = validText(this, options);
 
-          var value = $(this).val();
-          var err = false;
-          console.log($(this).val());
-
-          if(options.size){
-            if(options.size.min){
-              if(value.length < options.size.min){
-                console.log("size.min err");
-                $(this).parent().addClass("has-error");
-                err = true;
-              }
-            }
-            if(options.size.max){
-              if(value.length > options.size.max){
-                console.log("size.max err");
-                $(this).parent().addClass("has-error");
-                err = true;
-              }
-            }
-          }
-          if(options.regexp && options.regexp.pat){
-            var patt;
-            if(options.regexp.mod){
-              patt = new RegExp(options.regexp.pat, options.regexp.mod);
-            } else{
-              patt = new RegExp(options.regexp.pat);
-            }
-            console.log(patt);
-            if(!patt.test(value)){
-              console.log("regexp err");
-              $(this).parent().addClass("has-error");
-              err = true;
-            }
-          }
-          console.log(err);
-          if(!err){
-            $(this).parent().removeClass("has-error");
-            $(this).parent().addClass("has-success");
-          }
-
-        // });
+        if(isValid){
+          options.onValid(this);
+        } 
+        else {
+          options.onNotValid(this);
+        }
       });
     }
   };
@@ -70,16 +74,3 @@
   };
 
 })( jQuery );
-
-$("#textInput").valid("text", 
-  { 
-  "size": 
-    { 
-      "min": 2, 
-      "max": 10 
-    }, 
-  "regexp": 
-    {
-      "pat": "[A-Z]\\w+"
-    } 
-  });//.css({"background": "red"});
