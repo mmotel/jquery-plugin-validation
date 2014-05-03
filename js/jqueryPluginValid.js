@@ -109,6 +109,38 @@
           options.onNotValid(this);
         }
       });
+    },
+    'email': function ( options ) {
+      //show logic
+      console.log(options);
+
+      var settings = $.extend(
+        {
+          "size": 
+          { 
+            "min": 5, 
+            "max": 64 
+          }, 
+        "regexp": 
+          {
+            "pat": "[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\."
+        + "[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@"
+        + "(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?"
+          }
+        }, 
+        options);
+      console.log(settings);
+
+      return this.each(function () {
+        var isValid = validText(this, settings);
+
+        if(isValid){
+          options.onValid(this);
+        } 
+        else {
+          options.onNotValid(this);
+        }
+      });
     }
   };
   

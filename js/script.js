@@ -45,4 +45,16 @@ $(function() {
 
   });
 
+
+
+  $('#emailInput').keyup(function (){
+
+    $("#emailInput").valid("email", 
+      { 
+      "onValid": onValid,
+      "onNotValid": onNotValid 
+      });//.css({"background": "red"});
+
+  });
+
 });

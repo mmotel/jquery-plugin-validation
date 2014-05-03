@@ -114,3 +114,44 @@ Example:
     "onNotValid": onNotValid 
     });
 ```
+
+## Email validation
+
+```js
+  $('emailFileds').valid("email", options);
+```
+
+Avaliable `options`:
+
+```js
+  {
+    "onValid": fieldValidHandler,
+    "onNotValid": fieldNotValidhandler
+  }
+```
+
+Example:
+
+```html
+  <div class="form-group">
+    <label for="exampleInputEmail1">Email address</label>
+    <input type="email" class="form-control" id="emailInput" placeholder="Email address">
+  </div>
+```
+
+```js
+  var onValid = function (that) {
+    $(that).parent().removeClass("has-error");
+    $(that).parent().addClass("has-success");
+  }
+
+  var onNotValid = function (that) {
+    $(that).parent().addClass("has-error");
+  }
+
+  $("#emailInput").valid("email", 
+    { 
+    "onValid": onValid,
+    "onNotValid": onNotValid 
+    });
+```
