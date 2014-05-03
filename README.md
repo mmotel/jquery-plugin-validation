@@ -135,7 +135,7 @@ Example:
 ```html
   <div class="form-group">
     <label for="exampleInputEmail1">Email address</label>
-    <input type="email" class="form-control" id="emailInput" placeholder="Email address">
+    <input type="email" class="form-control" id="emailInput" placeholder="Email">
   </div>
 ```
 
