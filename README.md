@@ -30,20 +30,20 @@ Avaliable `options`:
 Example:
 
 ```html
-<div class="form-group">
-  <label for="exampleInputEmail1">Text</label>
-  <input type="text" class="form-control" id="textInput" placeholder="Text">
-</div>
+  <div class="form-group">
+    <label for="exampleInputEmail1">Text</label>
+    <input type="text" class="form-control" id="textInput" placeholder="Text">
+  </div>
 ```
 
 ```js
   var onValid = function (that) {
-    $(that).parent().addClass("has-error");
+    $(that).parent().removeClass("has-error");
+    $(that).parent().addClass("has-success");
   }
 
   var onNotValid = function (that) {
-    $(that).parent().removeClass("has-error");
-    $(that).parent().addClass("has-success");
+    $(that).parent().addClass("has-error");
   }
 
   $("#textInput").valid("text", 
@@ -57,6 +57,59 @@ Example:
       {
         "pat": "[A-Z]\\w+"
       },
+    "onValid": onValid,
+    "onNotValid": onNotValid 
+    });
+```
+
+## Number validation
+
+```js
+  $('numberFileds').valid("number", options);
+```
+
+Avaliable `options`:
+
+```js
+  {
+    "value":
+    {
+      "min": Int/Float,
+      "max": Int/Float
+    },
+    "type": "Int"|"Float" ,
+    "onValid": fieldValidHandler,
+    "onNotValid": fieldNotValidhandler
+  }
+```
+
+Example:
+
+```html
+  <div class="form-group">
+    <label for="exampleInputEmail1">Number</label>
+    <input type="number" class="form-control" id="numberInput" placeholder="Number">
+  </div>
+```
+
+```js
+  var onValid = function (that) {
+    $(that).parent().removeClass("has-error");
+    $(that).parent().addClass("has-success");
+  }
+
+  var onNotValid = function (that) {
+    $(that).parent().addClass("has-error");
+  }
+
+  $("#numberInput").valid("number", 
+    { 
+    "value": 
+      { 
+        "min": 10, 
+        "max": 100 
+      }, 
+    "type": "Int",
     "onValid": onValid,
     "onNotValid": onNotValid 
     });

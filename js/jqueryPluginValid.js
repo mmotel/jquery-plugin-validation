@@ -1,7 +1,5 @@
 (function( $ ){
 
-  //!!! wyciągnąć funckję ValidText z methods.text !!!
-
   var validText = function (that, options) {
     var value = $(that).val();
     var err = false;
@@ -29,6 +27,7 @@
         patt = new RegExp(options.regexp.pat);
       }
       console.log(patt);
+      console.log(patt.test(value));
       if(!patt.test(value)){
         console.log("regexp err");
         err = true;
@@ -36,7 +35,44 @@
     }
     console.log(err);
     
-    return err;
+    return !err;
+  }
+
+  var validNumber = function (that, options) {
+    var value = parseFloat($(that).val());
+    var err = false;
+    console.log(value);
+
+    if( !isNaN(value) ){
+      if(options.value && options.value.min){
+        if(value < options.value.min){
+          console.log("value.min err");
+          err = true;
+        }
+      }
+      if(options.value && options.value.max){
+        if(value > options.value.max){
+          console.log("value.max err");
+          err = true;
+        }
+      }
+      if(options.type){
+        if(options.type === "Int"){
+          if(value % 1 !== 0){
+            console.log("type.Int err")
+            err = true;
+          }
+        } //else if(options.type === "Float"){
+          // ?
+        //}
+      }
+    }
+    else {
+      err = true;
+    }
+    console.log(err);
+
+    return !err;
   }
 
   var methods = {
@@ -50,6 +86,21 @@
 
       return this.each(function () {
         var isValid = validText(this, options);
+
+        if(isValid){
+          options.onValid(this);
+        } 
+        else {
+          options.onNotValid(this);
+        }
+      });
+    },
+    'number': function ( options ) {
+      //show logic
+      console.log(options);
+
+      return this.each(function () {
+        var isValid = validNumber(this, options);
 
         if(isValid){
           options.onValid(this);
