@@ -80,66 +80,33 @@
     var err = false;
     console.log($(that).val());
 
-    if(options.size){
-      if(options.size.min){
-        if(value.length < options.size.min){
-          console.log("size.min err");
-          err = true;
-        }
-      }
-      if(options.size.max){
-        if(value.length > options.size.max){
-          console.log("size.max err");
-          err = true;
-        }
-      }
+    if(! validText(that, { "size": options.size })){
+      console.log("size err");
+      err = true;
     }
+
     if(options.content){
       if(options.content.small){
-        var patt;
-        patt = new RegExp("[a-z]");
-        
-        console.log(patt);
-        console.log(patt.test(value));
-        
-        if(!patt.test(value)){
+        if(! validText(that, { "regexp": { "pat": "[a-z]" } })){
           console.log("content.small err");
           err = true;
         }        
       }
       if(options.content.big){
-        var patt;
-        patt = new RegExp("[A-Z]");
-        
-        console.log(patt);
-        console.log(patt.test(value));
-        
-        if(!patt.test(value)){
+        if(! validText(that, { "regexp": { "pat": "[A-Z]" } })){
           console.log("content.big err");
           err = true;
-        }        
+        }         
       }
       if(options.content.digit){
-        var patt;
-        patt = new RegExp("\\d");
-        
-        console.log(patt);
-        console.log(patt.test(value));
-        
-        if(!patt.test(value)){
-          console.log("content.big err");
+        if(! validText(that, { "regexp": { "pat": "\\d" } })){
+          console.log("content.digit err");
           err = true;
-        }        
+        }         
       }
       if(options.content.special){
-        var patt;
-        patt = new RegExp("[\\!\\@\\#\\$\\%\\^\\&\\*\\(\\)\\_\\+\\-\\=]");
-        
-        console.log(patt);
-        console.log(patt.test(value));
-        
-        if(!patt.test(value)){
-          console.log("content.big err");
+        if(! validText(that, { "regexp": { "pat": "[\\!\\@\\#\\$\\%\\^\\&\\*\\(\\)\\_\\+\\-\\=]" } })){
+          console.log("content.special err");
           err = true;
         }        
       }
@@ -259,7 +226,7 @@
       return methods.init.apply( this, arguments );
     }
     else {
-      $.error('Method ' + method + ' does not exists in jQuery.myPlugin');
+      $.error('Method ' + method + ' does not exists in jQuery.valid');
     }
   };
 

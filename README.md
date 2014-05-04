@@ -30,10 +30,10 @@ Avaliable `options`:
 Example:
 
 ```html
-  <div class="form-group">
-    <label for="exampleInputEmail1">Text</label>
-    <input type="text" class="form-control" id="textInput" placeholder="Text">
-  </div>
+<div class="form-group">
+  <label for="exampleInputEmail1">Text</label>
+  <input type="text" class="form-control" id="textInput" placeholder="Text">
+</div>
 ```
 
 ```js
@@ -86,10 +86,10 @@ Avaliable `options`:
 Example:
 
 ```html
-  <div class="form-group">
-    <label for="exampleInputEmail1">Number</label>
-    <input type="number" class="form-control" id="numberInput" placeholder="Number">
-  </div>
+<div class="form-group">
+  <label for="exampleInputEmail1">Number</label>
+  <input type="number" class="form-control" id="numberInput" placeholder="Number">
+</div>
 ```
 
 ```js
@@ -133,10 +133,10 @@ Avaliable `options`:
 Example:
 
 ```html
-  <div class="form-group">
-    <label for="exampleInputEmail1">Email address</label>
-    <input type="email" class="form-control" id="emailInput" placeholder="Email">
-  </div>
+<div class="form-group">
+  <label for="exampleInputEmail1">Email address</label>
+  <input type="email" class="form-control" id="emailInput" placeholder="Email">
+</div>
 ```
 
 ```js
@@ -186,10 +186,10 @@ Avaliable `options`:
 Example:
 
 ```html
-  <div class="form-group">
-    <label for="exampleInputPassword1">Password</label>
-    <input type="password" class="form-control" id="passwordInput" placeholder="Password">
-  </div>
+<div class="form-group">
+  <label for="exampleInputPassword1">Password</label>
+  <input type="password" class="form-control" id="passwordInput" placeholder="Password">
+</div>
 ```
 
 ```js
