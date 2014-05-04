@@ -2,6 +2,15 @@
 
 #### jQuery Plugin: Forms Validation
 
+Features:
+
+* [Text validation](#text-validation)
+* [Number validation](#number-validation)
+* [Email validation](#email-validation)
+* [Password validation](#password-validation)
+
+***
+
 ## Text validation
 
 ```js
