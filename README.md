@@ -274,6 +274,25 @@ Example:
 ```
 
 ```js
+  var onValid = function (that) {
+    $(that).parent().removeClass("has-error");
+    $(that).parent().addClass("has-success");
+  };
+
+  var onNotValid = function (that) {
+    $(that).parent().addClass("has-error");
+  };
+
+  var onFormValid = function () {
+    console.log("form is valid :)");
+    $("#submitBtn").removeAttr("disabled"); 
+  };
+
+  var onFormNotValid = function () {
+    console.log("form is not valid ;(");
+    $("#submitBtn").attr("disabled", "disabled");
+  };
+
   $().valid("form", {
     "fields": [
       //text field

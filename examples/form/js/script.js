@@ -68,12 +68,9 @@ $(function() {
           }
         }
       ],
-      //submit button
-      "sumbit": "#submitBtn",
       //validation callbacks
       "onFormValid": onFormValid,
       "onFormNotValid": onFormNotValid,
-      "trigger": "auto"
     });
     
   });
