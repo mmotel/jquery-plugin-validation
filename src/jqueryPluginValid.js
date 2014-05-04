@@ -1,4 +1,5 @@
 (function( $ ){
+  "use strict";
 
   var validText = function (that, options) {
     var value = $(that).val();
@@ -36,7 +37,7 @@
     console.log(err);
     
     return !err;
-  }
+  };
 
   var validNumber = function (that, options) {
     var value = parseFloat($(that).val());
@@ -59,7 +60,7 @@
       if(options.type){
         if(options.type === "Int"){
           if(value % 1 !== 0){
-            console.log("type.Int err")
+            console.log("type.Int err");
             err = true;
           }
         } //else if(options.type === "Float"){
@@ -73,7 +74,7 @@
     console.log(err);
 
     return !err;
-  }
+  };
 
   var validPassword = function (that, options) {
     var value = $(that).val();
@@ -115,7 +116,7 @@
     console.log(err);
     
     return !err;
-  }
+  };
 
   var methods = {
     'init': function ( options ) {
@@ -165,10 +166,10 @@
           }, 
         "regexp": 
           {
-            "pat": "[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\."
-        + "[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@"
-        + "(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+"
-        + "[a-z0-9](?:[a-z0-9-]*[a-z0-9])?"
+            "pat": "[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\." +
+         "[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@" +
+         "(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+" +
+         "[a-z0-9](?:[a-z0-9-]*[a-z0-9])?"
           }
         }, 
         options);

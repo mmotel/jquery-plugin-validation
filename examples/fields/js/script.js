@@ -1,13 +1,14 @@
 $(function() {
+  "use strict";
 
   var onValid = function (that) {
     $(that).parent().removeClass("has-error");
     $(that).parent().addClass("has-success");
-  }
+  };
 
   var onNotValid = function (that) {
     $(that).parent().addClass("has-error");
-  }
+  };
 
 
   $('#textInput').keyup(function (){
