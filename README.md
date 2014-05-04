@@ -8,6 +8,7 @@ Features:
 * [Number validation](#number-validation)
 * [Email validation](#email-validation)
 * [Password validation](#password-validation)
+* [Form validation](#form-validation)
 
 ***
 
@@ -227,5 +228,100 @@ Example:
       },
     "onValid": onValid,
     "onNotValid": onNotValid 
+    });
+```
+
+## Form validation
+
+```js
+  $('passwordFileds').valid("form", 
+    {
+      "fields":
+        [
+          { "field": "textFields", "type": "text", "options": textOptions },
+          { "field": "numberFields", "type": "number", "options": numberOptions },
+          { "field": "emailFields", "type": "email", "options": emailOptions },
+          { "field": "passwordFields", "type": "password", "options": passwordOptions }
+          //...  
+        ],
+      "onFormValid": onFormValid,
+      "onFormNotValid": onFormNotValid
+    });
+```
+
+Example:
+
+```html
+<div role="form">
+  <div class="form-group">
+    <label for="exampleInputEmail1">Text</label>
+    <input type="text" class="form-control" id="textInput" placeholder="Text">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputEmail1">Number</label>
+    <input type="number" class="form-control" id="numberInput" placeholder="Number">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputEmail1">Email address</label>
+    <input type="email" class="form-control" id="emailInput" placeholder="Email">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Password</label>
+    <input type="password" class="form-control" id="passwordInput" placeholder="Password">
+  </div>
+  <button class="btn btn-primary" id="submitBtn">Submit</button>
+</div>
+```
+
+```js
+  $().valid("form", {
+    "fields": [
+      //text field
+      { "field": "#textInput", 
+        "type": "text", 
+        "options": 
+        {
+          "size": { "min": 6, "max": 64 },
+          "regexp": { "pat": "^[A-Z]\\w+" },
+          "onValid": onValid,
+          "onNotValid": onNotValid 
+        }
+      },
+      //number field
+      { "field": "#numberInput", 
+        "type": "number", 
+        "options": 
+        {
+          "value": { "min": 10, "max": 100 },
+          "type": "Int",
+          "onValid": onValid,
+          "onNotValid": onNotValid 
+        }
+      },
+      //email field
+      { "field": "#emailInput", 
+        "type": "email", 
+        "options": 
+        {
+          "onValid": onValid,
+          "onNotValid": onNotValid 
+        }
+      },
+      //password field
+      { "field": "#passwordInput", 
+        "type": "password", 
+        "options": 
+        {
+          "size": { "min": 8, "max": 32 }, 
+          "content":
+          { "small": true, "big": true, "digit": true, "special": true },
+          "onValid": onValid,
+          "onNotValid": onNotValid 
+        }
+      }
+    ],
+    //validation callbacks
+    "onFormValid": onFormValid,
+    "onFormNotValid": onFormNotValid,
     });
 ```
