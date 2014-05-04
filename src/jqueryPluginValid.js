@@ -1,162 +1,81 @@
 (function( $ ){
   "use strict";
 
-  var validText = function (that, options) {
-    var value = $(that).val();
-    var err = false;
-    console.log($(that).val());
+  var valid = {
+    "text": function (that, options) {
+      var value = $(that).val();
+      var err = false;
+      console.log($(that).val());
 
-    if(options.size){
-      if(options.size.min){
-        if(value.length < options.size.min){
-          console.log("size.min err");
-          err = true;
-        }
-      }
-      if(options.size.max){
-        if(value.length > options.size.max){
-          console.log("size.max err");
-          err = true;
-        }
-      }
-    }
-    if(options.regexp && options.regexp.pat){
-      var patt;
-      if(options.regexp.mod){
-        patt = new RegExp(options.regexp.pat, options.regexp.mod);
-      } else{
-        patt = new RegExp(options.regexp.pat);
-      }
-      console.log(patt);
-      console.log(patt.test(value));
-      if(!patt.test(value)){
-        console.log("regexp err");
-        err = true;
-      }
-    }
-    console.log(err);
-    
-    return !err;
-  };
-
-  var validNumber = function (that, options) {
-    var value = parseFloat($(that).val());
-    var err = false;
-    console.log(value);
-
-    if( !isNaN(value) ){
-      if(options.value && options.value.min){
-        if(value < options.value.min){
-          console.log("value.min err");
-          err = true;
-        }
-      }
-      if(options.value && options.value.max){
-        if(value > options.value.max){
-          console.log("value.max err");
-          err = true;
-        }
-      }
-      if(options.type){
-        if(options.type === "Int"){
-          if(value % 1 !== 0){
-            console.log("type.Int err");
+      if(options.size){
+        if(options.size.min){
+          if(value.length < options.size.min){
+            console.log("size.min err");
             err = true;
           }
-        } //else if(options.type === "Float"){
-          // ?
-        //}
-      }
-    }
-    else {
-      err = true;
-    }
-    console.log(err);
-
-    return !err;
-  };
-
-  var validPassword = function (that, options) {
-    var value = $(that).val();
-    var err = false;
-    console.log($(that).val());
-
-    if(! validText(that, { "size": options.size })){
-      console.log("size err");
-      err = true;
-    }
-
-    if(options.content){
-      if(options.content.small){
-        if(! validText(that, { "regexp": { "pat": "[a-z]" } })){
-          console.log("content.small err");
-          err = true;
-        }        
-      }
-      if(options.content.big){
-        if(! validText(that, { "regexp": { "pat": "[A-Z]" } })){
-          console.log("content.big err");
-          err = true;
-        }         
-      }
-      if(options.content.digit){
-        if(! validText(that, { "regexp": { "pat": "\\d" } })){
-          console.log("content.digit err");
-          err = true;
-        }         
-      }
-      if(options.content.special){
-        if(! validText(that, { "regexp": { "pat": "[\\!\\@\\#\\$\\%\\^\\&\\*\\(\\)\\_\\+\\-\\=]" } })){
-          console.log("content.special err");
-          err = true;
-        }        
-      }
-
-    }
-    console.log(err);
-    
-    return !err;
-  };
-
-  var methods = {
-    'init': function ( options ) {
-      //init logic
-      // var settings = $.extend( { text: 'Podaj wartość' }, options );
-    },
-    'text': function ( options ) {
-      //show logic
-      console.log(options);
-
-      return this.each(function () {
-        var isValid = validText(this, options);
-
-        if(isValid){
-          options.onValid(this);
-        } 
-        else {
-          options.onNotValid(this);
         }
-      });
-    },
-    'number': function ( options ) {
-      //show logic
-      console.log(options);
-
-      return this.each(function () {
-        var isValid = validNumber(this, options);
-
-        if(isValid){
-          options.onValid(this);
-        } 
-        else {
-          options.onNotValid(this);
+        if(options.size.max){
+          if(value.length > options.size.max){
+            console.log("size.max err");
+            err = true;
+          }
         }
-      });
+      }
+      if(options.regexp && options.regexp.pat){
+        var patt;
+        if(options.regexp.mod){
+          patt = new RegExp(options.regexp.pat, options.regexp.mod);
+        } else{
+          patt = new RegExp(options.regexp.pat);
+        }
+        console.log(patt);
+        console.log(patt.test(value));
+        if(!patt.test(value)){
+          console.log("regexp err");
+          err = true;
+        }
+      }
+      console.log(err);
+      
+      return !err;
     },
-    'email': function ( options ) {
-      //show logic
-      console.log(options);
+    "number": function (that, options) {
+      var value = parseFloat($(that).val());
+      var err = false;
+      console.log(value);
 
+      if( !isNaN(value) ){
+        if(options.value && options.value.min){
+          if(value < options.value.min){
+            console.log("value.min err");
+            err = true;
+          }
+        }
+        if(options.value && options.value.max){
+          if(value > options.value.max){
+            console.log("value.max err");
+            err = true;
+          }
+        }
+        if(options.type){
+          if(options.type === "Int"){
+            if(value % 1 !== 0){
+              console.log("type.Int err");
+              err = true;
+            }
+          } //else if(options.type === "Float"){
+            // ?
+          //}
+        }
+      }
+      else {
+        err = true;
+      }
+      console.log(err);
+
+      return !err;
+    },
+    "email": function (that, options) {
       var settings = $.extend(
         {
           "size": 
@@ -173,10 +92,112 @@
           }
         }, 
         options);
-      console.log(settings);
+
+      return valid.text(that, settings);
+    },
+    "password": function (that, options) {
+      var value = $(that).val();
+      var err = false;
+      console.log($(that).val());
+
+      if(! valid.text(that, { "size": options.size })){
+        console.log("size err");
+        err = true;
+      }
+
+      if(options.content){
+        if(options.content.small){
+          if(! valid.text(that, { "regexp": { "pat": "[a-z]" } })){
+            console.log("content.small err");
+            err = true;
+          }        
+        }
+        if(options.content.big){
+          if(! valid.text(that, { "regexp": { "pat": "[A-Z]" } })){
+            console.log("content.big err");
+            err = true;
+          }         
+        }
+        if(options.content.digit){
+          if(! valid.text(that, { "regexp": { "pat": "\\d" } })){
+            console.log("content.digit err");
+            err = true;
+          }         
+        }
+        if(options.content.special){
+          if(! valid.text(that, { "regexp": { "pat": "[\\!\\@\\#\\$\\%\\^\\&\\*\\(\\)\\_\\+\\-\\=]" } })){
+            console.log("content.special err");
+            err = true;
+          }        
+        }
+
+      }
+      console.log(err);
+      
+      return !err;
+    },
+    "fields": function (that) {
+      var err = false;
+      console.log(that);
+
+      var fields = $(that.field);
+
+      for(var i = 0; i < fields.length; i++){
+
+        var isValid = valid[ that.type ](fields[i], that.options);
+
+        if(!isValid){
+          that.options.onNotValid(fields[i]);
+          err = true;
+        }
+        else {
+          that.options.onValid(fields[i]);
+        }
+
+      };
+
+      return !err;
+    }
+  }
+
+  var methods = {
+    'init': function ( options ) {
+      //init logic
+      // var settings = $.extend( { text: 'Podaj wartość' }, options );
+    },
+    'text': function ( options ) {
+      console.log(options);
 
       return this.each(function () {
-        var isValid = validText(this, settings);
+        var isValid = valid.text(this, options);
+
+        if(isValid){
+          options.onValid(this);
+        } 
+        else {
+          options.onNotValid(this);
+        }
+      });
+    },
+    'number': function ( options ) {
+      console.log(options);
+
+      return this.each(function () {
+        var isValid = valid.number(this, options);
+
+        if(isValid){
+          options.onValid(this);
+        } 
+        else {
+          options.onNotValid(this);
+        }
+      });
+    },
+    'email': function ( options ) {
+      console.log(options);
+
+      return this.each(function () {
+        var isValid = valid.email(this, options);
 
         if(isValid){
           options.onValid(this);
@@ -187,7 +208,6 @@
       });
     },
     'password': function ( options ) {
-      //show logic
       console.log(options);
 
       var settings = $.extend({
@@ -207,7 +227,7 @@
       console.log(settings);
 
       return this.each(function () {
-        var isValid = validPassword(this, settings);
+        var isValid = valid.password(this, settings);
 
         if(isValid){
           options.onValid(this);
@@ -216,6 +236,28 @@
           options.onNotValid(this);
         }
       });
+    },
+    'form': function ( options ) {
+      console.log(options);
+      var err = false;
+
+      // for(var i=0; i < options.fields.length; i++){
+      options.fields.forEach(function( that, id ) {
+
+        var isValid = valid.fields(that);//options.fields[i]);
+
+        if(!isValid){
+          err = true;
+        } 
+      });
+
+      if(err){
+        options.onFormNotValid();
+      } else {
+        options.onFormValid();
+      }
+
+      return this;
     }
   };
   
