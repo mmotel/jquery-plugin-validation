@@ -267,7 +267,7 @@ Example:
   </div>
   <div class="form-group">
     <label for="exampleInputPassword1">Password</label>
-    <input type="password" class="form-control" id="passwordInput" placeholder="Password">
+    <input type="password" class="form-control" id="passwordInput" placeholder="Passwd">
   </div>
   <button class="btn btn-primary" id="submitBtn">Submit</button>
 </div>
