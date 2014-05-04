@@ -249,6 +249,20 @@ Example:
     });
 ```
 
+Avaliable `types`:
+
+* [text](#text-validation)
+* [number](#number-validation)
+* [email](#email-validation)
+* [password](#password-validation)
+
+Avaliable `options`:
+
+* [textOptions](#text-validation)
+* [numberOptions](#number-validation)
+* [emailOptions](#email-validation)
+* [passwordOptions](#password-validation)
+
 Example:
 
 ```html
