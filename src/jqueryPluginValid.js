@@ -140,21 +140,18 @@
       var err = false;
       console.log(that);
 
-      var fields = $(that.field);
-
-      for(var i = 0; i < fields.length; i++){
-
-        var isValid = valid[ that.type ](fields[i], that.options);
+      $(that.field).each(function () { 
+        var isValid = valid[ that.type ](this, that.options);
 
         if(!isValid){
-          that.options.onNotValid(fields[i]);
+          that.options.onNotValid(this);
           err = true;
         }
         else {
-          that.options.onValid(fields[i]);
+          that.options.onValid(this);
         }
 
-      };
+      });
 
       return !err;
     }
@@ -241,10 +238,8 @@
       console.log(options);
       var err = false;
 
-      // for(var i=0; i < options.fields.length; i++){
       options.fields.forEach(function( that, id ) {
-
-        var isValid = valid.fields(that);//options.fields[i]);
+        var isValid = valid.fields(that);
 
         if(!isValid){
           err = true;
