@@ -55,7 +55,7 @@ Example:
       }, 
     "regexp": 
       {
-        "pat": "[A-Z]\\w+"
+        "pat": "^[A-Z]\\w+"
       },
     "onValid": onValid,
     "onNotValid": onNotValid 
