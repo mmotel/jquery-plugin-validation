@@ -1,7 +1,7 @@
 /*
   Version: 0.1.0 BETA
   Release date: 05.05.2014
-  Copyrigth (c) Mateusz Motel 
+  Copyright (c) Mateusz Motel 
 */
 
 (function( $ ){
