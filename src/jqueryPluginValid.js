@@ -190,62 +190,6 @@
         }
       });
     },
-    // 'text': function ( options ) {
-    //   console.log(options);
-
-    //   return this.each(function () {
-    //     var isValid = valid.text(this, options);
-
-    //     if(isValid){
-    //       options.onValid(this);
-    //     } 
-    //     else {
-    //       options.onNotValid(this);
-    //     }
-    //   });
-    // },
-    // 'number': function ( options ) {
-    //   console.log(options);
-
-    //   return this.each(function () {
-    //     var isValid = valid.number(this, options);
-
-    //     if(isValid){
-    //       options.onValid(this);
-    //     } 
-    //     else {
-    //       options.onNotValid(this);
-    //     }
-    //   });
-    // },
-    // 'email': function ( options ) {
-    //   console.log(options);
-
-    //   return this.each(function () {
-    //     var isValid = valid.email(this, options);
-
-    //     if(isValid){
-    //       options.onValid(this);
-    //     } 
-    //     else {
-    //       options.onNotValid(this); 
-    //     }
-    //   });
-    // },
-    // 'password': function ( options ) {
-    //   console.log(options);
-
-    //   return this.each(function () {
-    //     var isValid = valid.password(this, options);
-
-    //     if(isValid){
-    //       options.onValid(this);
-    //     } 
-    //     else {
-    //       options.onNotValid(this);
-    //     }
-    //   });
-    // },
     'form': function ( options ) {
       console.log(options);
       var err = false;
@@ -270,7 +214,7 @@
   
   $.fn.valid = function ( method ) {
     if( valid[ method ] && method !== "fields" ) {
-      return methods.field.apply( this, arguments);//Array.prototype.slice.call( arguments, 1 ) );
+      return methods.field.apply( this, arguments);
     }
     else if( methods[ method ] && method !== "field" ){
       return methods[ method ].apply( this, Array.prototype.slice.call( arguments, 1 ) );
