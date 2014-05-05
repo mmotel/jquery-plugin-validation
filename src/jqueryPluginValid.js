@@ -175,6 +175,10 @@
     'init': function ( options ) {
       //init logic
       // var settings = $.extend( { text: 'Podaj wartość' }, options );
+      console.log("Usage: $(selector).valid(type, options)");
+      console.log("Go to http://github.com/mmotel/jquery-plugin-validation/ for more details.");
+
+      return this;
     },
     'field': function ( method, options ) {
       console.log(options);
@@ -214,7 +218,7 @@
   
   $.fn.valid = function ( method ) {
     if( valid[ method ] && method !== "fields" ) {
-      return methods.field.apply( this, arguments);
+      return methods.field.apply( this, arguments );
     }
     else if( methods[ method ] && method !== "field" ){
       return methods[ method ].apply( this, Array.prototype.slice.call( arguments, 1 ) );
