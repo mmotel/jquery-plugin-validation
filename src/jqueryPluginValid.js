@@ -100,31 +100,45 @@
       var err = false;
       console.log($(that).val());
 
-      if(! valid.text(that, { "size": options.size })){
+      var settings = $.extend({
+        "size":
+        {
+          "min": 8
+        }, 
+        "content":
+        {
+          "small": true, 
+          "big": true,
+          "digit": true,
+          "special": false
+        }
+      }, options);
+
+      if(! valid.text(that, { "size": settings.size })){
         console.log("size err");
         err = true;
       }
 
-      if(options.content){
-        if(options.content.small){
+      if(settings.content){
+        if(settings.content.small){
           if(! valid.text(that, { "regexp": { "pat": "[a-z]" } })){
             console.log("content.small err");
             err = true;
           }        
         }
-        if(options.content.big){
+        if(settings.content.big){
           if(! valid.text(that, { "regexp": { "pat": "[A-Z]" } })){
             console.log("content.big err");
             err = true;
           }         
         }
-        if(options.content.digit){
+        if(settings.content.digit){
           if(! valid.text(that, { "regexp": { "pat": "\\d" } })){
             console.log("content.digit err");
             err = true;
           }         
         }
-        if(options.content.special){
+        if(settings.content.special){
           if(! valid.text(that, { "regexp": { "pat": "[\\!\\@\\#\\$\\%\\^\\&\\*\\(\\)\\_\\+\\-\\=]" } })){
             console.log("content.special err");
             err = true;
@@ -162,11 +176,11 @@
       //init logic
       // var settings = $.extend( { text: 'Podaj wartość' }, options );
     },
-    'text': function ( options ) {
+    'field': function ( method, options ) {
       console.log(options);
 
       return this.each(function () {
-        var isValid = valid.text(this, options);
+        var isValid = valid[ method ](this, options);
 
         if(isValid){
           options.onValid(this);
@@ -176,64 +190,62 @@
         }
       });
     },
-    'number': function ( options ) {
-      console.log(options);
+    // 'text': function ( options ) {
+    //   console.log(options);
 
-      return this.each(function () {
-        var isValid = valid.number(this, options);
+    //   return this.each(function () {
+    //     var isValid = valid.text(this, options);
 
-        if(isValid){
-          options.onValid(this);
-        } 
-        else {
-          options.onNotValid(this);
-        }
-      });
-    },
-    'email': function ( options ) {
-      console.log(options);
+    //     if(isValid){
+    //       options.onValid(this);
+    //     } 
+    //     else {
+    //       options.onNotValid(this);
+    //     }
+    //   });
+    // },
+    // 'number': function ( options ) {
+    //   console.log(options);
 
-      return this.each(function () {
-        var isValid = valid.email(this, options);
+    //   return this.each(function () {
+    //     var isValid = valid.number(this, options);
 
-        if(isValid){
-          options.onValid(this);
-        } 
-        else {
-          options.onNotValid(this); 
-        }
-      });
-    },
-    'password': function ( options ) {
-      console.log(options);
+    //     if(isValid){
+    //       options.onValid(this);
+    //     } 
+    //     else {
+    //       options.onNotValid(this);
+    //     }
+    //   });
+    // },
+    // 'email': function ( options ) {
+    //   console.log(options);
 
-      var settings = $.extend({
-        "size":
-        {
-          "min": 8
-        }, 
-        "content":
-        {
-          "small": true, 
-          "big": true,
-          "digit": true,
-          "special": false
-        }
-      }, options);
+    //   return this.each(function () {
+    //     var isValid = valid.email(this, options);
 
-      console.log(settings);
+    //     if(isValid){
+    //       options.onValid(this);
+    //     } 
+    //     else {
+    //       options.onNotValid(this); 
+    //     }
+    //   });
+    // },
+    // 'password': function ( options ) {
+    //   console.log(options);
 
-      return this.each(function () {
-        var isValid = valid.password(this, settings);
+    //   return this.each(function () {
+    //     var isValid = valid.password(this, options);
 
-        if(isValid){
-          options.onValid(this);
-        } 
-        else {
-          options.onNotValid(this);
-        }
-      });
-    },
+    //     if(isValid){
+    //       options.onValid(this);
+    //     } 
+    //     else {
+    //       options.onNotValid(this);
+    //     }
+    //   });
+    // },
     'form': function ( options ) {
       console.log(options);
       var err = false;
@@ -257,7 +269,10 @@
   };
   
   $.fn.valid = function ( method ) {
-    if( methods[ method ] ) {
+    if( valid[ method ] && method !== "fields" ) {
+      return methods.field.apply( this, arguments);//Array.prototype.slice.call( arguments, 1 ) );
+    }
+    else if( methods[ method ] && method !== "field" ){
       return methods[ method ].apply( this, Array.prototype.slice.call( arguments, 1 ) );
     }
     else if ( typeof method === 'object' || ! method ) {
