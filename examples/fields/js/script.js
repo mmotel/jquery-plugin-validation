@@ -26,7 +26,7 @@ $(function() {
         },
       "onValid": onValid,
       "onNotValid": onNotValid 
-      });//.css({"background": "red"});
+      });
 
   });
 
@@ -42,7 +42,7 @@ $(function() {
       "type": "Int",
       "onValid": onValid,
       "onNotValid": onNotValid 
-      });//.css({"background": "red"});
+      });
 
   });
 
@@ -52,7 +52,7 @@ $(function() {
       { 
       "onValid": onValid,
       "onNotValid": onNotValid 
-      });//.css({"background": "red"});
+      });
 
   });
 
@@ -74,7 +74,7 @@ $(function() {
         },
       "onValid": onValid,
       "onNotValid": onNotValid 
-      });//.css({"background": "red"});
+      });
 
   });
 

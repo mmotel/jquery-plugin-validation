@@ -1,3 +1,9 @@
+/*
+  Version: 0.1.0 BETA
+  Release date: 05.05.2014
+  Copyrigth (c) Mateusz Motel 
+*/
+
 (function( $ ){
   "use strict";
 
@@ -5,18 +11,18 @@
     "text": function (that, options) {
       var value = $(that).val();
       var err = false;
-      console.log($(that).val());
+      // //console.log($(that).val());
 
       if(options.size){
         if(options.size.min){
           if(value.length < options.size.min){
-            console.log("size.min err");
+            // //console.log("size.min err");
             err = true;
           }
         }
         if(options.size.max){
           if(value.length > options.size.max){
-            console.log("size.max err");
+            // //console.log("size.max err");
             err = true;
           }
         }
@@ -28,39 +34,39 @@
         } else{
           patt = new RegExp(options.regexp.pat);
         }
-        console.log(patt);
-        console.log(patt.test(value));
+        // //console.log(patt);
+        // //console.log(patt.test(value));
         if(!patt.test(value)){
-          console.log("regexp err");
+          // //console.log("regexp err");
           err = true;
         }
       }
-      console.log(err);
+      //console.log(err);
       
       return !err;
     },
     "number": function (that, options) {
       var value = parseFloat($(that).val());
       var err = false;
-      console.log(value);
+      // //console.log(value);
 
       if( !isNaN(value) ){
         if(options.value && options.value.min){
           if(value < options.value.min){
-            console.log("value.min err");
+            //console.log("value.min err");
             err = true;
           }
         }
         if(options.value && options.value.max){
           if(value > options.value.max){
-            console.log("value.max err");
+            //console.log("value.max err");
             err = true;
           }
         }
         if(options.type){
           if(options.type === "Int"){
             if(value % 1 !== 0){
-              console.log("type.Int err");
+              //console.log("type.Int err");
               err = true;
             }
           } //else if(options.type === "Float"){
@@ -71,7 +77,7 @@
       else {
         err = true;
       }
-      console.log(err);
+      //console.log(err);
 
       return !err;
     },
@@ -98,7 +104,7 @@
     "password": function (that, options) {
       var value = $(that).val();
       var err = false;
-      console.log($(that).val());
+      //console.log($(that).val());
 
       var settings = $.extend({
         "size":
@@ -115,44 +121,44 @@
       }, options);
 
       if(! valid.text(that, { "size": settings.size })){
-        console.log("size err");
+        //console.log("size err");
         err = true;
       }
 
       if(settings.content){
         if(settings.content.small){
           if(! valid.text(that, { "regexp": { "pat": "[a-z]" } })){
-            console.log("content.small err");
+            //console.log("content.small err");
             err = true;
           }        
         }
         if(settings.content.big){
           if(! valid.text(that, { "regexp": { "pat": "[A-Z]" } })){
-            console.log("content.big err");
+            //console.log("content.big err");
             err = true;
           }         
         }
         if(settings.content.digit){
           if(! valid.text(that, { "regexp": { "pat": "\\d" } })){
-            console.log("content.digit err");
+            //console.log("content.digit err");
             err = true;
           }         
         }
         if(settings.content.special){
           if(! valid.text(that, { "regexp": { "pat": "[\\!\\@\\#\\$\\%\\^\\&\\*\\(\\)\\_\\+\\-\\=]" } })){
-            console.log("content.special err");
+            //console.log("content.special err");
             err = true;
           }        
         }
 
       }
-      console.log(err);
+      //console.log(err);
       
       return !err;
     },
     "fields": function (that) {
       var err = false;
-      console.log(that);
+      //console.log(that);
 
       $(that.field).each(function () { 
         var isValid = valid[ that.type ](this, that.options);
@@ -173,15 +179,13 @@
 
   var methods = {
     'init': function ( options ) {
-      //init logic
-      // var settings = $.extend( { text: 'Podaj wartość' }, options );
       console.log("Usage: $(selector).valid(type, options)");
       console.log("Go to http://github.com/mmotel/jquery-plugin-validation/ for more details.");
 
       return this;
     },
     'field': function ( method, options ) {
-      console.log(options);
+      //console.log(options);
 
       return this.each(function () {
         var isValid = valid[ method ](this, options);
@@ -195,7 +199,7 @@
       });
     },
     'form': function ( options ) {
-      console.log(options);
+      //console.log(options);
       var err = false;
 
       options.fields.forEach(function( that, id ) {

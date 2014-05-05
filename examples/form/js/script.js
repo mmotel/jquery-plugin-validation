@@ -11,12 +11,12 @@ $(function() {
   };
 
   var onFormValid = function () {
-    console.log("form is valid :)");
+    console.log("form is valid.");
     $("#submitBtn").removeAttr("disabled"); 
   };
 
   var onFormNotValid = function () {
-    console.log("form is not valid ;(");
+    console.log("form is not valid.");
     $("#submitBtn").attr("disabled", "disabled");
   };
 

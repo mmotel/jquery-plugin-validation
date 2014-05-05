@@ -1,6 +1,6 @@
 #  jQuery Plugin: Fields & Forms Validation
 
-#### Current version: `0.0.1 alpha`
+#### Current version: `0.1.0 BETA`
 
 #### Features:
 
