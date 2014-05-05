@@ -24,7 +24,7 @@
   $('textFileds').valid("text", options);
 ```
 
-Avaliable `options`:
+Available `options`:
 
 ```js
   {
@@ -84,7 +84,7 @@ Example:
   $('numberFileds').valid("number", options);
 ```
 
-Avaliable `options`:
+Available `options`:
 
 ```js
   {
@@ -137,7 +137,7 @@ Example:
   $('emailFileds').valid("email", options);
 ```
 
-Avaliable `options`:
+Available `options`:
 
 ```js
   {
@@ -178,7 +178,7 @@ Example:
   $('passwordFileds').valid("password", options);
 ```
 
-Avaliable `options`:
+Available `options`:
 
 ```js
   {
@@ -255,14 +255,14 @@ Example:
     });
 ```
 
-Avaliable `types`:
+Available `types`:
 
 * [text](#text-validation)
 * [number](#number-validation)
 * [email](#email-validation)
 * [password](#password-validation)
 
-Avaliable `options`:
+Available `options`:
 
 * [textOptions](#text-validation)
 * [numberOptions](#number-validation)
