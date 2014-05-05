@@ -1,14 +1,20 @@
-# jquery-plugin-validation
+#  jQuery Plugin: Fields & Forms Validation
 
-#### jQuery Plugin: Forms Validation
+#### Current version: `0.0.1 alpha`
 
-Features:
+#### Features:
 
 * [Text validation](#text-validation)
 * [Number validation](#number-validation)
 * [Email validation](#email-validation)
 * [Password validation](#password-validation)
 * [Form validation](#form-validation)
+
+###### To do:
+
+* Zip code validation
+* Url valiation
+* Date validation
 
 ***
 
