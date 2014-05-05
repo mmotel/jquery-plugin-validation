@@ -234,7 +234,7 @@ Example:
 ## Form validation
 
 ```js
-  $('passwordFileds').valid("form", 
+  $().valid("form", 
     {
       "fields":
         [
