@@ -243,7 +243,7 @@
       options.fields.forEach(function( that, id ) {
         var isValid = valid.fields(that);
 
-        if(! isValid.valid){
+        if(! isValid){
           err = true;
         } 
       });
