@@ -10,6 +10,11 @@
 * [Password validation](#password-validation)
 * [Form validation](#form-validation)
 
+#### Live demo:
+
+* [Fields validation](http://mathewgd.webd.pl/jqueryValidDemo/examples/fields/)
+* [Form validation](http://mathewgd.webd.pl/jqueryValidDemo/examples/form/)
+
 ###### To do:
 
 * Zip code validation
