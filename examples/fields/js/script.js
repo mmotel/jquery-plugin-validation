@@ -1,13 +1,17 @@
 $(function() {
   "use strict";
 
-  var onValid = function (that) {
-    $(that).parent().removeClass("has-error");
-    $(that).parent().addClass("has-success");
+  var onValid = function (errType) {
+    if(errType.empty) return;
+    $(this).parent().removeClass("has-error");
+    $(this).parent().addClass("has-success");
+    // console.log(errType);
   };
 
-  var onNotValid = function (that) {
-    $(that).parent().addClass("has-error");
+  var onNotValid = function (errType) {
+    if(errType.empty) return;
+    $(this).parent().addClass("has-error");
+    // console.log(errType);
   };
 
 

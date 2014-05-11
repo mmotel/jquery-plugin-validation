@@ -11,19 +11,28 @@
     "text": function (that, options) {
       var value = $(that).val();
       var err = false;
+      var errType = {};
       // //console.log($(that).val());
+
+      if(value.length === 0){
+        errType.empty = true;
+      }
 
       if(options.size){
         if(options.size.min){
           if(value.length < options.size.min){
             // //console.log("size.min err");
             err = true;
+            if(!errType.size){ errType.size = {}; }
+            errType.size.min = true;
           }
         }
         if(options.size.max){
           if(value.length > options.size.max){
             // //console.log("size.max err");
             err = true;
+            if(!errType.size){ errType.size = {}; }
+            errType.size.max = true;
           }
         }
       }
@@ -39,28 +48,40 @@
         if(!patt.test(value)){
           // //console.log("regexp err");
           err = true;
+          errType.regexp = true;
         }
       }
       //console.log(err);
       
-      return !err;
+      // console.log(errType);
+
+      return { "valid": !err, "errType": errType };
     },
     "number": function (that, options) {
       var value = parseFloat($(that).val());
       var err = false;
-      // //console.log(value);
+      var errType = {};
+      // //console.log($(that).val());
+
+      if($(that).val().length === 0){
+        errType.empty = true;
+      }
 
       if( !isNaN(value) ){
         if(options.value && options.value.min){
           if(value < options.value.min){
             //console.log("value.min err");
             err = true;
+            if(!errType.value){ errType.value = {}; }
+            errType.value.min = true;
           }
         }
         if(options.value && options.value.max){
           if(value > options.value.max){
             //console.log("value.max err");
             err = true;
+            if(!errType.value){ errType.value = {}; }
+            errType.value.max = true;            
           }
         }
         if(options.type){
@@ -68,6 +89,7 @@
             if(value % 1 !== 0){
               //console.log("type.Int err");
               err = true;
+              errType.type = true;
             }
           } //else if(options.type === "Float"){
             // ?
@@ -79,7 +101,7 @@
       }
       //console.log(err);
 
-      return !err;
+      return { "valid": !err, "errType": errType };
     },
     "email": function (that, options) {
       var settings = $.extend(
@@ -104,7 +126,8 @@
     "password": function (that, options) {
       var value = $(that).val();
       var err = false;
-      //console.log($(that).val());
+      var errType = {};
+      // //console.log($(that).val());
 
       var settings = $.extend({
         "size":
@@ -120,41 +143,56 @@
         }
       }, options);
 
-      if(! valid.text(that, { "size": settings.size })){
+      if(value.length === 0){
+        errType.empty = true;
+      }
+      var validSize = valid.text(that, { "size": settings.size });
+      if(! validSize.valid){
         //console.log("size err");
         err = true;
+        errType.size = {};
+        if(validSize.errType.size.min){ errType.size.min = true; }
+        else if(validSize.errType.size.max){ errType.size.max = true; }
       }
 
       if(settings.content){
         if(settings.content.small){
-          if(! valid.text(that, { "regexp": { "pat": "[a-z]" } })){
+          if(! valid.text(that, { "regexp": { "pat": "[a-z]" } }).valid){
             //console.log("content.small err");
             err = true;
+            if(! errType.content){ errType.content = {}; }
+            errType.content.small = true;
           }        
         }
         if(settings.content.big){
-          if(! valid.text(that, { "regexp": { "pat": "[A-Z]" } })){
+          if(! valid.text(that, { "regexp": { "pat": "[A-Z]" } }).valid){
             //console.log("content.big err");
             err = true;
+            if(! errType.content){ errType.content = {}; }
+            errType.content.big = true;
           }         
         }
         if(settings.content.digit){
-          if(! valid.text(that, { "regexp": { "pat": "\\d" } })){
+          if(! valid.text(that, { "regexp": { "pat": "\\d" } }).valid){
             //console.log("content.digit err");
             err = true;
+            if(! errType.content){ errType.content = {}; }
+            errType.content.digit = true;
           }         
         }
         if(settings.content.special){
-          if(! valid.text(that, { "regexp": { "pat": "[\\!\\@\\#\\$\\%\\^\\&\\*\\(\\)\\_\\+\\-\\=]" } })){
+          if(! valid.text(that, { "regexp": { "pat": "[\\!\\@\\#\\$\\%\\^\\&\\*\\(\\)\\_\\+\\-\\=]" } }).valid){
             //console.log("content.special err");
             err = true;
+            if(! errType.content){ errType.content = {}; }
+            errType.content.special = true;
           }        
         }
 
       }
       //console.log(err);
       
-      return !err;
+      return { "valid": !err, "errType": errType };
     },
     "fields": function (that) {
       var err = false;
@@ -163,12 +201,12 @@
       $(that.field).each(function () { 
         var isValid = valid[ that.type ](this, that.options);
 
-        if(!isValid){
-          that.options.onNotValid(this);
+        if(!isValid.valid){
+          that.options.onNotValid.call(this, isValid.errType);
           err = true;
         }
         else {
-          that.options.onValid(this);
+          that.options.onValid.call(this, isValid.errType);
         }
 
       });
@@ -190,11 +228,11 @@
       return this.each(function () {
         var isValid = valid[ method ](this, options);
 
-        if(isValid){
-          options.onValid(this);
+        if(isValid.valid){
+          options.onValid.call(this, isValid.errType);
         } 
         else {
-          options.onNotValid(this);
+          options.onNotValid.call(this, isValid.errType);
         }
       });
     },
@@ -205,15 +243,15 @@
       options.fields.forEach(function( that, id ) {
         var isValid = valid.fields(that);
 
-        if(!isValid){
+        if(! isValid.valid){
           err = true;
         } 
       });
 
       if(err){
-        options.onFormNotValid();
+        options.onFormNotValid.call(this);
       } else {
-        options.onFormValid();
+        options.onFormValid.call(this);
       }
 
       return this;
