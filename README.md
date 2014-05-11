@@ -1,6 +1,6 @@
 #  jQuery Plugin: Fields & Forms Validation
 
-#### Current version: `0.1.0 BETA`
+#### Current version: `0.2.0 BETA`
 
 #### Features:
 
@@ -43,8 +43,37 @@ Available `options`:
       "pat": RegExpPattern,
       "mod": RegExpModifiers
     },
+    //validation callbacks
     "onValid": fieldValidHandler,
     "onNotValid": fieldNotValidhandler
+  }
+```
+
+Validation callbacks:
+
+```js
+var fieldValidHandler = function () {
+  //this contains DOM element
+}
+```
+
+```js
+var fieldNotValidhandler = function ( errType ) {
+  //this contains DOM element 
+}
+```
+
+`errType` object:
+
+```js
+  {
+    "empty": Boolean //true if DOM element is empty
+    "size":
+    {
+      "min": Boolean,
+      "max": Boolean
+    },
+    "regexp": Boolean
   }
 ```
 
@@ -58,14 +87,14 @@ Example:
 ```
 
 ```js
-  var onValid = function (that) {
-    $(that).parent().removeClass("has-error");
-    $(that).parent().addClass("has-success");
-  }
+  var onValid = function () {
+    $(this).parent().removeClass("has-error");
+    $(this).parent().addClass("has-success");
+  };
 
-  var onNotValid = function (that) {
-    $(that).parent().addClass("has-error");
-  }
+  var onNotValid = function (errType) {
+    $(this).parent().addClass("has-error");
+  };
 
   $("#textInput").valid("text", 
     { 
@@ -98,9 +127,38 @@ Available `options`:
       "min": Int/Float,
       "max": Int/Float
     },
-    "type": "Int"|"Float" ,
+    "type": "Int"|"Float",
+    //validation callbacks
     "onValid": fieldValidHandler,
     "onNotValid": fieldNotValidhandler
+  }
+```
+
+Validation callbacks:
+
+```js
+var fieldValidHandler = function () {
+  //this contains DOM element
+}
+```
+
+```js
+var fieldNotValidhandler = function ( errType ) {
+  //this contains DOM element 
+}
+```
+
+`errType` object:
+
+```js
+  {
+    "empty": Boolean //true if DOM element is empty
+    "value":
+    {
+      "min": Boolean,
+      "max": Boolean
+    },
+    "type": Boolean
   }
 ```
 
@@ -114,14 +172,14 @@ Example:
 ```
 
 ```js
-  var onValid = function (that) {
-    $(that).parent().removeClass("has-error");
-    $(that).parent().addClass("has-success");
-  }
+  var onValid = function () {
+    $(this).parent().removeClass("has-error");
+    $(this).parent().addClass("has-success");
+  };
 
-  var onNotValid = function (that) {
-    $(that).parent().addClass("has-error");
-  }
+  var onNotValid = function (errType) {
+    $(this).parent().addClass("has-error");
+  };
 
   $("#numberInput").valid("number", 
     { 
@@ -146,8 +204,37 @@ Available `options`:
 
 ```js
   {
+    //validation callbacks
     "onValid": fieldValidHandler,
     "onNotValid": fieldNotValidhandler
+  }
+```
+
+Validation callbacks:
+
+```js
+var fieldValidHandler = function () {
+  //this contains DOM element
+}
+```
+
+```js
+var fieldNotValidhandler = function ( errType ) {
+  //this contains DOM element 
+}
+```
+
+`errType` object:
+
+```js
+  {
+    "empty": Boolean //true if DOM element is empty
+    "size":
+    {
+      "min": Boolean,
+      "max": Boolean
+    },
+    "regexp": Boolean
   }
 ```
 
@@ -161,13 +248,13 @@ Example:
 ```
 
 ```js
-  var onValid = function (that) {
-    $(that).parent().removeClass("has-error");
-    $(that).parent().addClass("has-success");
+  var onValid = function () {
+    $(this).parent().removeClass("has-error");
+    $(this).parent().addClass("has-success");
   }
 
-  var onNotValid = function (that) {
-    $(that).parent().addClass("has-error");
+  var onNotValid = function (errType) {
+    $(this).parent().addClass("has-error");
   }
 
   $("#emailInput").valid("email", 
@@ -204,6 +291,40 @@ Available `options`:
   }
 ```
 
+Validation callbacks:
+
+```js
+var fieldValidHandler = function () {
+  //this contains DOM element
+}
+```
+
+```js
+var fieldNotValidhandler = function ( errType ) {
+  //this contains DOM element 
+}
+```
+
+`errType` object:
+
+```js
+  {
+    "empty": Boolean //true if DOM element is empty
+    "size":
+    {
+      "min": Boolean,
+      "max": Boolean
+    },
+    "content": 
+    {
+      "small": Boolean,
+      "big": Boolean,
+      "digit": Boolean,
+      "special": Boolean
+    }
+  }
+```
+
 Example:
 
 ```html
@@ -214,13 +335,13 @@ Example:
 ```
 
 ```js
-  var onValid = function (that) {
-    $(that).parent().removeClass("has-error");
-    $(that).parent().addClass("has-success");
+  var onValid = function () {
+    $(this).parent().removeClass("has-error");
+    $(this).parent().addClass("has-success");
   }
 
-  var onNotValid = function (that) {
-    $(that).parent().addClass("has-error");
+  var onNotValid = function (errType) {
+    $(this).parent().addClass("has-error");
   }
 
   $("#passwordInput").valid("password", 
@@ -255,6 +376,7 @@ Example:
           { "field": "passwordFields", "type": "password", "options": passwordOptions }
           //...  
         ],
+      //form validation callbacks
       "onFormValid": onFormValid,
       "onFormNotValid": onFormNotValid
     });
@@ -273,6 +395,20 @@ Available `options`:
 * [numberOptions](#number-validation)
 * [emailOptions](#email-validation)
 * [passwordOptions](#password-validation)
+
+Form validation callbacks:
+
+```js
+var fieldValidHandler = function () {
+  //this contains DOM element from selector
+}
+```
+
+```js
+var fieldNotValidhandler = function () {
+  //this contains DOM element from selector
+}
+```
 
 Example:
 
