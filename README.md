@@ -94,9 +94,7 @@ Example:
     "regexp": 
       {
         "pat": "^[A-Z]\\w+"
-      },
-    "onValid": onValid,
-    "onNotValid": onNotValid 
+      }
     },
     function ( err ) {
       if(err){
@@ -381,7 +379,6 @@ Form validation callback:
     else{
       //dosth with valid form
     }
-
   }
 ```
 

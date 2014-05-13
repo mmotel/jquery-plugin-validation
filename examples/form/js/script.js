@@ -12,8 +12,7 @@ $(function() {
     }
   };
 
-  $("#textInput, #numberInput, #emailInput, #passwordInput").keyup(function (){
-
+  var validForm = function () { 
     $().valid("form", {
       "fields": [
         //text field
@@ -63,6 +62,13 @@ $(function() {
         $("#submitBtn").removeAttr("disabled");
       }
     });
+  }
+
+  validForm();
+
+  $("#textInput, #numberInput, #emailInput, #passwordInput").keyup(function (){
+
+    validForm();
     
   });
 
