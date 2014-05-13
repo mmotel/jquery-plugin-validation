@@ -418,7 +418,7 @@ Example:
 ```
 
 ```js
-  var callback = function ( err ) {
+  var fieldCallback = function ( err ) {
     if(err){
       $(this).parent().addClass("has-error");
     }
@@ -429,7 +429,8 @@ Example:
   };
 
   $().valid("form", {
-    "fields": [
+    "fields": 
+      [
         //text field
         { "field": "#textInput", 
           "type": "text", 
@@ -438,7 +439,7 @@ Example:
             "size": { "min": 6, "max": 64 },
             "regexp": { "pat": "^[A-Z]\\w+" },
           },
-          "callback": callback
+          "callback": fieldCallback
         },
         //number field
         { "field": "#numberInput", 
@@ -448,13 +449,13 @@ Example:
             "value": { "min": 10, "max": 100 },
             "type": "Int",
           },
-          "callback": callback
+          "callback": fieldCallback
         },
         //email field
         { "field": "#emailInput", 
           "type": "email", 
           "options": {},
-          "callback": callback
+          "callback": fieldCallback
         },
         //password field
         { "field": "#passwordInput", 
@@ -465,7 +466,7 @@ Example:
             "content":
             { "small": true, "big": true, "digit": true, "special": true },
           },
-          "callback": callback
+          "callback": fieldCallback
         }
       ]
     },
