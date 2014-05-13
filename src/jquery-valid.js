@@ -222,7 +222,7 @@
 
       return this;
     },
-    'field': function ( method, options ) {
+    'field': function ( method, options, callback ) {
       //console.log(options);
 
       return this.each(function () {
@@ -236,7 +236,7 @@
         }
       });
     },
-    'form': function ( options ) {
+    'form': function ( options, callback ) {
       //console.log(options);
       var err = false;
 
@@ -249,9 +249,11 @@
       });
 
       if(err){
-        options.onFormNotValid.call(this);
+        // options.onFormNotValid.call(this);
+        callback.call(this, { "form": true });
       } else {
-        options.onFormValid.call(this);
+        // options.onFormValid.call(this);
+        callback.call(this);
       }
 
       return this;

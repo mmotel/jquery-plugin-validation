@@ -70,9 +70,17 @@ $(function() {
           }
         }
       ],
-      //validation callbacks
-      "onFormValid": onFormValid,
-      "onFormNotValid": onFormNotValid
+      // //validation callbacks
+      // "onFormValid": onFormValid,
+      // "onFormNotValid": onFormNotValid
+    },
+    function ( err ) {
+      if(err){
+        onFormNotValid();
+      }
+      else{
+        onFormValid();
+      }
     });
     
   });

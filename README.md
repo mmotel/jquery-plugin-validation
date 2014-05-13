@@ -376,10 +376,8 @@ Example:
           { "field": "passwordFields", "type": "password", "options": passwordOptions }
           //...  
         ],
-      //form validation callbacks
-      "onFormValid": onFormValid,
-      "onFormNotValid": onFormNotValid
-    });
+    },
+    callback);
 ```
 
 Available `types`:
@@ -396,18 +394,27 @@ Available `options`:
 * [emailOptions](#email-validation)
 * [passwordOptions](#password-validation)
 
-Form validation callbacks:
+Form validation callback:
 
 ```js
-var fieldValidHandler = function () {
+var fieldValidHandler = function ( err ) {
   //this contains DOM element from selector
+  if(err){
+    //do sth with not valid form
+  }
+  else{
+    //dosth with valid form
+  }
+
 }
 ```
 
+`err` object:
+
 ```js
-var fieldNotValidhandler = function () {
-  //this contains DOM element from selector
-}
+  {
+    "form": Boolean //true if form is not valid
+  }
 ```
 
 Example:
@@ -442,14 +449,6 @@ Example:
 
   var onNotValid = function (errType) {
     $(this).parent().addClass("has-error");
-  };
-
-  var onFormValid = function () {
-    $("#submitBtn").removeAttr("disabled"); 
-  };
-
-  var onFormNotValid = function () {
-    $("#submitBtn").attr("disabled", "disabled");
   };
 
   $().valid("form", {
@@ -497,9 +496,14 @@ Example:
           "onNotValid": onNotValid 
         }
       }
-    ],
-    //validation callbacks
-    "onFormValid": onFormValid,
-    "onFormNotValid": onFormNotValid,
+    ]
+    },
+    function( err ){
+      if(err){
+        $("#submitBtn").attr("disabled", "disabled");
+      }
+      else{
+        $("#submitBtn").removeAttr("disabled");
+      }
     });
 ```
