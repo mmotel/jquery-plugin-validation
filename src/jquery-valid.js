@@ -202,11 +202,11 @@
         var isValid = valid[ that.type ](this, that.options);
 
         if(!isValid.valid){
-          that.options.onNotValid.call(this, isValid.errType);
+          that.callback.call(this, isValid.errType);
           err = true;
         }
         else {
-          that.options.onValid.call(this, isValid.errType);
+          that.callback.call(this);
         }
 
       });
@@ -229,10 +229,12 @@
         var isValid = valid[ method ](this, options);
 
         if(isValid.valid){
-          options.onValid.call(this, isValid.errType);
+          // options.onValid.call(this, isValid.errType);
+          callback.call(this);
         } 
         else {
-          options.onNotValid.call(this, isValid.errType);
+          // options.onNotValid.call(this, isValid.errType);
+          callback.call(this, isValid.errType);
         }
       });
     },

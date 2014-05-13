@@ -1,25 +1,15 @@
 $(function() {
   "use strict";
 
-  var onValid = function (errType) {
-    if(errType.empty) return;
-    $(this).parent().removeClass("has-error");
-    $(this).parent().addClass("has-success");
-  };
-
-  var onNotValid = function (errType) {
-    if(errType.empty) return;
-    $(this).parent().addClass("has-error");
-  };
-
-  var onFormValid = function () {
-    console.log("form is valid.");
-    $("#submitBtn").removeAttr("disabled"); 
-  };
-
-  var onFormNotValid = function () {
-    console.log("form is not valid.");
-    $("#submitBtn").attr("disabled", "disabled");
+  var callback = function ( err ) {
+    if(err){
+      if(err.empty) return;
+      $(this).parent().addClass("has-error");
+    }
+    else{
+      $(this).parent().removeClass("has-error");
+      $(this).parent().addClass("has-success");
+    }
   };
 
   $("#textInput, #numberInput, #emailInput, #passwordInput").keyup(function (){
@@ -33,9 +23,8 @@ $(function() {
           {
             "size": { "min": 6, "max": 64 },
             "regexp": { "pat": "^[A-Z]\\w+" },
-            "onValid": onValid,
-            "onNotValid": onNotValid 
-          }
+          },
+          "callback": callback
         },
         //number field
         { "field": "#numberInput", 
@@ -44,18 +33,14 @@ $(function() {
           {
             "value": { "min": 10, "max": 100 },
             "type": "Int",
-            "onValid": onValid,
-            "onNotValid": onNotValid 
-          }
+          },
+          "callback": callback
         },
         //email field
         { "field": "#emailInput", 
           "type": "email", 
-          "options": 
-          {
-            "onValid": onValid,
-            "onNotValid": onNotValid 
-          }
+          "options": {},
+          "callback": callback
         },
         //password field
         { "field": "#passwordInput", 
@@ -65,21 +50,17 @@ $(function() {
             "size": { "min": 8, "max": 32 }, 
             "content":
             { "small": true, "big": true, "digit": true, "special": true },
-            "onValid": onValid,
-            "onNotValid": onNotValid 
-          }
+          },
+          "callback": callback
         }
-      ],
-      // //validation callbacks
-      // "onFormValid": onFormValid,
-      // "onFormNotValid": onFormNotValid
+      ]
     },
-    function ( err ) {
+    function( err ){
       if(err){
-        onFormNotValid();
+        $("#submitBtn").attr("disabled", "disabled");
       }
       else{
-        onFormValid();
+        $("#submitBtn").removeAttr("disabled");
       }
     });
     

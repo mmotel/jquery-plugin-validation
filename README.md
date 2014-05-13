@@ -26,7 +26,7 @@
 ## Text validation
 
 ```js
-  $('textFileds').valid("text", options);
+  $('textFileds').valid("text", options, callback);
 ```
 
 Available `options`:
@@ -42,28 +42,25 @@ Available `options`:
     {
       "pat": RegExpPattern,
       "mod": RegExpModifiers
-    },
-    //validation callbacks
-    "onValid": fieldValidHandler,
-    "onNotValid": fieldNotValidhandler
+    }
   }
 ```
 
-Validation callbacks:
+Validation callback:
 
 ```js
-var fieldValidHandler = function () {
-  //this contains DOM element
-}
+  function ( err ) {
+    //this contains DOM element
+    if(err){
+      //do sth with not valid DOM element
+    }
+    else{
+      //do sth with valid DOM element
+    }
+  }
 ```
 
-```js
-var fieldNotValidhandler = function ( errType ) {
-  //this contains DOM element 
-}
-```
-
-`errType` object:
+`err` object:
 
 ```js
   {
@@ -87,15 +84,6 @@ Example:
 ```
 
 ```js
-  var onValid = function () {
-    $(this).parent().removeClass("has-error");
-    $(this).parent().addClass("has-success");
-  };
-
-  var onNotValid = function (errType) {
-    $(this).parent().addClass("has-error");
-  };
-
   $("#textInput").valid("text", 
     { 
     "size": 
@@ -109,13 +97,22 @@ Example:
       },
     "onValid": onValid,
     "onNotValid": onNotValid 
+    },
+    function ( err ) {
+      if(err){
+        $(this).parent().addClass("has-error");      
+      }
+      else{
+        $(this).parent().removeClass("has-error");
+        $(this).parent().addClass("has-success");      
+      }
     });
 ```
 
 ## Number validation
 
 ```js
-  $('numberFileds').valid("number", options);
+  $('numberFileds').valid("number", options, callback);
 ```
 
 Available `options`:
@@ -128,27 +125,24 @@ Available `options`:
       "max": Int/Float
     },
     "type": "Int"|"Float",
-    //validation callbacks
-    "onValid": fieldValidHandler,
-    "onNotValid": fieldNotValidhandler
   }
 ```
 
-Validation callbacks:
+Validation callback:
 
 ```js
-var fieldValidHandler = function () {
-  //this contains DOM element
-}
+  function ( err ) {
+    //this contains DOM element
+    if(err){
+      //do sth with not valid DOM element
+    }
+    else{
+      //do sth with valid DOM element
+    }
+  }
 ```
 
-```js
-var fieldNotValidhandler = function ( errType ) {
-  //this contains DOM element 
-}
-```
-
-`errType` object:
+`err` object:
 
 ```js
   {
@@ -172,15 +166,6 @@ Example:
 ```
 
 ```js
-  var onValid = function () {
-    $(this).parent().removeClass("has-error");
-    $(this).parent().addClass("has-success");
-  };
-
-  var onNotValid = function (errType) {
-    $(this).parent().addClass("has-error");
-  };
-
   $("#numberInput").valid("number", 
     { 
     "value": 
@@ -189,42 +174,39 @@ Example:
         "max": 100 
       }, 
     "type": "Int",
-    "onValid": onValid,
-    "onNotValid": onNotValid 
+    },
+    function ( err ) {
+      if(err){
+        $(this).parent().addClass("has-error");      
+      }
+      else{
+        $(this).parent().removeClass("has-error");
+        $(this).parent().addClass("has-success");      
+      }
     });
 ```
 
 ## Email validation
 
 ```js
-  $('emailFileds').valid("email", options);
-```
-
-Available `options`:
-
-```js
-  {
-    //validation callbacks
-    "onValid": fieldValidHandler,
-    "onNotValid": fieldNotValidhandler
-  }
+  $('emailFileds').valid("email", {}, callback);
 ```
 
 Validation callbacks:
 
 ```js
-var fieldValidHandler = function () {
-  //this contains DOM element
-}
+  function ( err ) {
+    //this contains DOM element
+    if(err){
+      //do sth with not valid DOM element
+    }
+    else{
+      //do sth with valid DOM element
+    }
+  }
 ```
 
-```js
-var fieldNotValidhandler = function ( errType ) {
-  //this contains DOM element 
-}
-```
-
-`errType` object:
+`err` object:
 
 ```js
   {
@@ -248,26 +230,22 @@ Example:
 ```
 
 ```js
-  var onValid = function () {
-    $(this).parent().removeClass("has-error");
-    $(this).parent().addClass("has-success");
-  }
-
-  var onNotValid = function (errType) {
-    $(this).parent().addClass("has-error");
-  }
-
-  $("#emailInput").valid("email", 
-    { 
-    "onValid": onValid,
-    "onNotValid": onNotValid 
+  $("#emailInput").valid("email", {},
+    function ( err ) {
+      if(err){
+        $(this).parent().addClass("has-error");      
+      }
+      else{
+        $(this).parent().removeClass("has-error");
+        $(this).parent().addClass("has-success");      
+      }
     });
 ```
 
 ## Password validation
 
 ```js
-  $('passwordFileds').valid("password", options);
+  $('passwordFileds').valid("password", options, callback);
 ```
 
 Available `options`:
@@ -285,24 +263,22 @@ Available `options`:
       "big": Boolean,       //default: true
       "digit": Boolean,     //default: true
       "special": Boolean    //default: false
-    },
-    "onValid": fieldValidHandler,
-    "onNotValid": fieldNotValidhandler
+    }
   }
 ```
 
-Validation callbacks:
+Validation callback:
 
 ```js
-var fieldValidHandler = function () {
-  //this contains DOM element
-}
-```
-
-```js
-var fieldNotValidhandler = function ( errType ) {
-  //this contains DOM element 
-}
+  function ( err ) {
+    //this contains DOM element
+    if(err){
+      //do sth with not valid DOM element
+    }
+    else{
+      //do sth with valid DOM element
+    }
+  }
 ```
 
 `errType` object:
@@ -335,15 +311,6 @@ Example:
 ```
 
 ```js
-  var onValid = function () {
-    $(this).parent().removeClass("has-error");
-    $(this).parent().addClass("has-success");
-  }
-
-  var onNotValid = function (errType) {
-    $(this).parent().addClass("has-error");
-  }
-
   $("#passwordInput").valid("password", 
     {     
       "size":
@@ -358,8 +325,15 @@ Example:
         "digit": true,
         "special": true
       },
-    "onValid": onValid,
-    "onNotValid": onNotValid 
+    },
+    function ( err ) {
+      if(err){
+        $(this).parent().addClass("has-error");      
+      }
+      else{
+        $(this).parent().removeClass("has-error");
+        $(this).parent().addClass("has-success");      
+      }
     });
 ```
 
@@ -370,10 +344,10 @@ Example:
     {
       "fields":
         [
-          { "field": "textFields", "type": "text", "options": textOptions },
-          { "field": "numberFields", "type": "number", "options": numberOptions },
-          { "field": "emailFields", "type": "email", "options": emailOptions },
-          { "field": "passwordFields", "type": "password", "options": passwordOptions }
+          { "field": "textFields", "type": "text", "options": textOptions, "callback": fieldCallback },
+          { "field": "numberFields", "type": "number", "options": numberOptions, "callback": fieldCallback },
+          { "field": "emailFields", "type": "email", "options": emailOptions, "callback": fieldCallback },
+          { "field": "passwordFields", "type": "password", "options": passwordOptions, "callback": fieldCallback }
           //...  
         ],
     },
@@ -397,16 +371,16 @@ Available `options`:
 Form validation callback:
 
 ```js
-var fieldValidHandler = function ( err ) {
-  //this contains DOM element from selector
-  if(err){
-    //do sth with not valid form
-  }
-  else{
-    //dosth with valid form
-  }
+  function ( err ) {
+    //this contains DOM element from selector
+    if(err){
+      //do sth with not valid form
+    }
+    else{
+      //dosth with valid form
+    }
 
-}
+  }
 ```
 
 `err` object:
@@ -442,61 +416,57 @@ Example:
 ```
 
 ```js
-  var onValid = function () {
-    $(this).parent().removeClass("has-error");
-    $(this).parent().addClass("has-success");
-  };
-
-  var onNotValid = function (errType) {
-    $(this).parent().addClass("has-error");
+  var callback = function ( err ) {
+    if(err){
+      if(err.empty) return;
+      $(this).parent().addClass("has-error");
+    }
+    else{
+      $(this).parent().removeClass("has-error");
+      $(this).parent().addClass("has-success");
+    }
   };
 
   $().valid("form", {
     "fields": [
-      //text field
-      { "field": "#textInput", 
-        "type": "text", 
-        "options": 
-        {
-          "size": { "min": 6, "max": 64 },
-          "regexp": { "pat": "^[A-Z]\\w+" },
-          "onValid": onValid,
-          "onNotValid": onNotValid 
+        //text field
+        { "field": "#textInput", 
+          "type": "text", 
+          "options": 
+          {
+            "size": { "min": 6, "max": 64 },
+            "regexp": { "pat": "^[A-Z]\\w+" },
+          },
+          "callback": callback
+        },
+        //number field
+        { "field": "#numberInput", 
+          "type": "number", 
+          "options": 
+          {
+            "value": { "min": 10, "max": 100 },
+            "type": "Int",
+          },
+          "callback": callback
+        },
+        //email field
+        { "field": "#emailInput", 
+          "type": "email", 
+          "options": {},
+          "callback": callback
+        },
+        //password field
+        { "field": "#passwordInput", 
+          "type": "password", 
+          "options": 
+          {
+            "size": { "min": 8, "max": 32 }, 
+            "content":
+            { "small": true, "big": true, "digit": true, "special": true },
+          },
+          "callback": callback
         }
-      },
-      //number field
-      { "field": "#numberInput", 
-        "type": "number", 
-        "options": 
-        {
-          "value": { "min": 10, "max": 100 },
-          "type": "Int",
-          "onValid": onValid,
-          "onNotValid": onNotValid 
-        }
-      },
-      //email field
-      { "field": "#emailInput", 
-        "type": "email", 
-        "options": 
-        {
-          "onValid": onValid,
-          "onNotValid": onNotValid 
-        }
-      },
-      //password field
-      { "field": "#passwordInput", 
-        "type": "password", 
-        "options": 
-        {
-          "size": { "min": 8, "max": 32 }, 
-          "content":
-          { "small": true, "big": true, "digit": true, "special": true },
-          "onValid": onValid,
-          "onNotValid": onNotValid 
-        }
-      }
-    ]
+      ]
     },
     function( err ){
       if(err){

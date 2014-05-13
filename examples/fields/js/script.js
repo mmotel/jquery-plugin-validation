@@ -1,18 +1,16 @@
 $(function() {
   "use strict";
 
-  var onValid = function (errType) {
-    if(errType.empty) return;
-    $(this).parent().removeClass("has-error");
-    $(this).parent().addClass("has-success");
-    // console.log(errType);
-  };
-
-  var onNotValid = function (errType) {
-    if(errType.empty) return;
-    $(this).parent().addClass("has-error");
-    // console.log(errType);
-  };
+  var fieldCallback = function ( err ) {
+    if(err){
+      if(err.empty) return;
+      $(this).parent().addClass("has-error");      
+    }
+    else{
+      $(this).parent().removeClass("has-error");
+      $(this).parent().addClass("has-success");      
+    }
+  }
 
 
   $('#textInput').keyup(function (){
@@ -27,10 +25,9 @@ $(function() {
       "regexp": 
         {
           "pat": "^[A-Z]\\w+"
-        },
-      "onValid": onValid,
-      "onNotValid": onNotValid 
-      });
+        }
+      },
+      fieldCallback);
 
   });
 
@@ -44,19 +41,14 @@ $(function() {
           "max": 100 
         }, 
       "type": "Int",
-      "onValid": onValid,
-      "onNotValid": onNotValid 
-      });
+      },
+      fieldCallback);
 
   });
 
   $('#emailInput').keyup(function (){
 
-    $("#emailInput").valid("email", 
-      { 
-      "onValid": onValid,
-      "onNotValid": onNotValid 
-      });
+    $("#emailInput").valid("email", {}, fieldCallback);
 
   });
 
@@ -76,9 +68,8 @@ $(function() {
           "digit": true,
           "special": true
         },
-      "onValid": onValid,
-      "onNotValid": onNotValid 
-      });
+      },
+      fieldCallback);
 
   });
 
