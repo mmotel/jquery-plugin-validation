@@ -1,6 +1,6 @@
 #  jQuery Plugin: Fields & Forms Validation
 
-#### Current version: `0.2.0 BETA`
+#### Current version: `0.3.0 BETA`
 
 #### Features:
 
@@ -281,7 +281,7 @@ Validation callback:
   }
 ```
 
-`errType` object:
+`err` object:
 
 ```js
   {
@@ -344,11 +344,13 @@ Example:
     {
       "fields":
         [
-          { "field": "textFields", "type": "text", "options": textOptions, "callback": fieldCallback },
-          { "field": "numberFields", "type": "number", "options": numberOptions, "callback": fieldCallback },
-          { "field": "emailFields", "type": "email", "options": emailOptions, "callback": fieldCallback },
-          { "field": "passwordFields", "type": "password", "options": passwordOptions, "callback": fieldCallback }
-          //...  
+          { 
+            "field": "textFields", 
+            "type": "text", 
+            "options": textOptions, 
+            "callback": fieldCallback 
+          },
+          //etc...  
         ],
     },
     callback);
@@ -418,7 +420,6 @@ Example:
 ```js
   var callback = function ( err ) {
     if(err){
-      if(err.empty) return;
       $(this).parent().addClass("has-error");
     }
     else{
