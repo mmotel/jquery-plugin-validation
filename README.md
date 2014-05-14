@@ -20,6 +20,8 @@
 * Zip code validation
 * Url valiation
 * Date validation
+* Size options for email validation
+* Condition option: function returning true/false
 
 ***
 
