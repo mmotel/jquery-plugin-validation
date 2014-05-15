@@ -1,6 +1,6 @@
 #  jQuery Plugin: Fields & Forms Validation
 
-#### Current version: `0.3.0 BETA`
+#### Current version: `0.3.1 BETA`
 
 #### Features:
 
@@ -196,10 +196,10 @@ Available options:
 ```js
   {
     "size":
-      {
-        "min": Int,   //default: 5
-        "max": Int    //default: 64
-      }
+    {
+      "min": Int,   //default: 5
+      "max": Int    //default: 64
+    }
   }
 ```
 
@@ -244,10 +244,10 @@ Example:
   $("#emailInput").valid("email", 
     {
       "size":
-        {
-          "min": 8,
-          "max": 64
-        }
+      {
+        "min": 8,
+        "max": 64
+      }
     },
     function ( err ) {
       if(err){
