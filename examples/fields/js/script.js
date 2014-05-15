@@ -48,7 +48,14 @@ $(function() {
 
   $('#emailInput').keyup(function (){
 
-    $("#emailInput").valid("email", {}, fieldCallback);
+    $("#emailInput").valid("email",
+      {
+        "size":
+          {
+            "min": 8,
+            "max": 64
+          }
+      }, fieldCallback);
 
   });
 

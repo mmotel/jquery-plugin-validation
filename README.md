@@ -20,7 +20,6 @@
 * Zip code validation
 * Url valiation
 * Date validation
-* Size options for email validation
 * Condition option: function returning true/false
 
 ***
@@ -189,7 +188,19 @@ Example:
 ## Email validation
 
 ```js
-  $('emailFileds').valid("email", {}, callback);
+  $('emailFileds').valid("email", options, callback);
+```
+
+Available options:
+
+```js
+  {
+    "size":
+      {
+        "min": Int,   //default: 5
+        "max": Int    //default: 64
+      }
+  }
 ```
 
 Validation callbacks:
@@ -230,7 +241,14 @@ Example:
 ```
 
 ```js
-  $("#emailInput").valid("email", {},
+  $("#emailInput").valid("email", 
+    {
+      "size":
+        {
+          "min": 8,
+          "max": 64
+        }
+    },
     function ( err ) {
       if(err){
         $(this).parent().addClass("has-error");      
