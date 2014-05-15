@@ -374,19 +374,12 @@ Example:
     callback);
 ```
 
-Available `types`:
+Available `types` &amp; `options`:
 
 * [text](#text-validation)
 * [number](#number-validation)
 * [email](#email-validation)
 * [password](#password-validation)
-
-Available `options`:
-
-* [textOptions](#text-validation)
-* [numberOptions](#number-validation)
-* [emailOptions](#email-validation)
-* [passwordOptions](#password-validation)
 
 Form validation callback:
 
