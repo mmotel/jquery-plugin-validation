@@ -191,7 +191,7 @@ Example:
   $('emailFileds').valid("email", options, callback);
 ```
 
-Available options:
+Available `options`:
 
 ```js
   {
