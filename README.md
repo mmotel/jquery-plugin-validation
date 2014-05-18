@@ -26,7 +26,7 @@
 ## Text validation
 
 ```js
-  $('textFileds').valid("text", options, callback);
+  $('textFields').valid("text", options, callback);
 ```
 
 ##### Available `options`:
@@ -124,7 +124,7 @@
 ## Number validation
 
 ```js
-  $('numberFileds').valid("number", options, callback);
+  $('numberFields').valid("number", options, callback);
 ```
 
 ##### Available `options`:
@@ -216,7 +216,7 @@
 ## Email validation
 
 ```js
-  $('emailFileds').valid("email", options, callback);
+  $('emailFields').valid("email", options, callback);
 ```
 
 ##### Available `options`:
@@ -305,7 +305,7 @@
 ## Password validation
 
 ```js
-  $('passwordFileds').valid("password", options, callback);
+  $('passwordFields').valid("password", options, callback);
 ```
 
 ##### Available `options`:
