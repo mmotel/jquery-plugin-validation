@@ -1,6 +1,6 @@
 #  jQuery Plugin: Fields & Forms Validation
 
-#### Current version: `0.3.2 BETA`
+#### Current version: `0.3.3 BETA`
 
 #### Features:
 
@@ -19,7 +19,6 @@
 
 * Zip code validation
 * Url valiation
-* Date validation
 
 ***
 
@@ -523,6 +522,7 @@
 * [number](#number-validation)
 * [email](#email-validation)
 * [password](#password-validation)
+* [date](#date-validation)
 
 ##### Form validation callback:
 

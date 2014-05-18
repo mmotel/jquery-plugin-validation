@@ -1,6 +1,6 @@
 /*
-  Version: 0.3.2 BETA
-  Release date: 18.05.2014
+  Version: 0.3.3 BETA
+  Release date: 19.05.2014
   Copyright (c) Mateusz Motel 
 */
 
