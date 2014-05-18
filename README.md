@@ -29,7 +29,7 @@
   $('textFileds').valid("text", options, callback);
 ```
 
-Available `options`:
+##### Available `options`:
 
 ```js
   {
@@ -47,7 +47,7 @@ Available `options`:
   }
 ```
 
-`condition` function:
+##### `condition` function:
 
 ```js
   function () {
@@ -56,7 +56,7 @@ Available `options`:
   }
 ```
 
-Validation callback:
+##### Validation callback:
 
 ```js
   function ( err ) {
@@ -70,7 +70,7 @@ Validation callback:
   }
 ```
 
-`err` object:
+##### `err` object:
 
 ```js
   {
@@ -85,7 +85,7 @@ Validation callback:
   }
 ```
 
-Example:
+##### Example:
 
 ```html
 <div class="form-group">
@@ -127,7 +127,7 @@ Example:
   $('numberFileds').valid("number", options, callback);
 ```
 
-Available `options`:
+##### Available `options`:
 
 ```js
   {
@@ -141,7 +141,7 @@ Available `options`:
   }
 ```
 
-`condition` function:
+##### `condition` function:
 
 ```js
   function () {
@@ -150,7 +150,7 @@ Available `options`:
   }
 ```
 
-Validation callback:
+##### Validation callback:
 
 ```js
   function ( err ) {
@@ -164,7 +164,7 @@ Validation callback:
   }
 ```
 
-`err` object:
+##### `err` object:
 
 ```js
   {
@@ -180,7 +180,7 @@ Validation callback:
   }
 ```
 
-Example:
+##### Example:
 
 ```html
 <div class="form-group">
@@ -219,7 +219,7 @@ Example:
   $('emailFileds').valid("email", options, callback);
 ```
 
-Available `options`:
+##### Available `options`:
 
 ```js
   {
@@ -232,7 +232,7 @@ Available `options`:
   }
 ```
 
-`condition` function:
+##### `condition` function:
 
 ```js
   function () {
@@ -241,7 +241,7 @@ Available `options`:
   }
 ```
 
-Validation callbacks:
+##### Validation callbacks:
 
 ```js
   function ( err ) {
@@ -255,7 +255,7 @@ Validation callbacks:
   }
 ```
 
-`err` object:
+##### `err` object:
 
 ```js
   {
@@ -270,7 +270,7 @@ Validation callbacks:
   }
 ```
 
-Example:
+##### Example:
 
 ```html
 <div class="form-group">
@@ -308,7 +308,7 @@ Example:
   $('passwordFileds').valid("password", options, callback);
 ```
 
-Available `options`:
+##### Available `options`:
 
 ```js
   {
@@ -328,7 +328,7 @@ Available `options`:
   }
 ```
 
-`condition` function:
+##### `condition` function:
 
 ```js
   function () {
@@ -337,7 +337,7 @@ Available `options`:
   }
 ```
 
-Validation callback:
+##### Validation callback:
 
 ```js
   function ( err ) {
@@ -351,7 +351,7 @@ Validation callback:
   }
 ```
 
-`err` object:
+##### `err` object:
 
 ```js
   {
@@ -372,7 +372,7 @@ Validation callback:
   }
 ```
 
-Example:
+##### Example:
 
 ```html
 <div class="form-group">
@@ -430,14 +430,14 @@ Example:
     callback);
 ```
 
-Available `types` &amp; `options`:
+##### Available `types` &amp; `options`:
 
 * [text](#text-validation)
 * [number](#number-validation)
 * [email](#email-validation)
 * [password](#password-validation)
 
-Form validation callback:
+##### Form validation callback:
 
 ```js
   function ( err ) {
@@ -451,7 +451,7 @@ Form validation callback:
   }
 ```
 
-`err` object:
+##### `err` object:
 
 ```js
   {
@@ -459,7 +459,7 @@ Form validation callback:
   }
 ```
 
-Example:
+##### Example:
 
 ```html
 <div role="form">
