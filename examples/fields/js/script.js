@@ -3,6 +3,7 @@ $(function() {
 
   var fieldCallback = function ( err ) {
     if(err){
+      console.log(err);
       if(err.empty) return;
       $(this).parent().addClass("has-error");      
     }
@@ -13,7 +14,7 @@ $(function() {
   }
 
 
-  $('#textInput').keyup(function (){
+  $('#textInput').bind("change keyup", function (){
 
     $("#textInput").valid("text", 
       { 
@@ -34,7 +35,7 @@ $(function() {
 
   });
 
-  $('#numberInput').keyup(function (){
+  $('#numberInput').bind("change keyup", function (){
 
     $("#numberInput").valid("number", 
       { 
@@ -52,7 +53,7 @@ $(function() {
 
   });
 
-  $('#emailInput').keyup(function (){
+  $('#emailInput').bind("change keyup", function (){
 
     $("#emailInput").valid("email",
       {
@@ -68,7 +69,7 @@ $(function() {
 
   });
 
-  $('#passwordInput').keyup(function (){
+  $('#passwordInput').bind("change keyup", function (){
 
     $("#passwordInput").valid("password", 
       {     
@@ -87,6 +88,20 @@ $(function() {
         "condition": function () {
             return $(this).val() !== "P@ssw0rd";
           }
+      },
+      fieldCallback);
+
+  });
+
+  $('#dateInput').bind("change keyup", function (){
+
+    $("#dateInput").valid("date", 
+      {     
+        "range":
+        {
+          "from": new Date("2014-05-18"),
+          "to": new Date("2014-06-01")
+        }
       },
       fieldCallback);
 

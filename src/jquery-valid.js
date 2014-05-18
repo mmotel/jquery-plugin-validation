@@ -215,6 +215,49 @@
       
       return { "valid": !err, "errType": errType };
     },
+    "date": function (that, options) {
+      var value = new Date($(that).val());
+      var err = false;
+      var errType = {};
+
+      if($(that).val().length === 0){
+        err = true;
+        errType.empty = true;
+      }
+
+      if(value.getTime() !== NaN){
+
+        if(options.range){
+          if(options.range.from){
+            if( value < options.range.from ){
+              err = true;
+              if(! errType.range){ errType.range = {} }
+              errType.range.from = true;
+            }
+          }
+          if(options.range.to){
+            if( value > options.range.to ){
+              err = true;
+              if(! errType.range){ errType.range = {} }
+              errType.range.to = true;
+            }
+          }          
+        }
+        if(options.condition){
+          if(! options.condition.call(that, {}) ){
+            err = true;
+            errType.condition = true;
+          }
+        }
+      }
+      else {
+        err = true;
+        errType.nad = true;
+      }
+      //console.log(err);
+      
+      return { "valid": !err, "errType": errType };
+    },
     "fields": function (that) {
       var err = false;
       //console.log(that);

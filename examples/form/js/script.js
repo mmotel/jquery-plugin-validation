@@ -41,6 +41,15 @@ $(function() {
           "options": {},
           "callback": callback
         },
+        //date field
+        {
+          "field": "#dateInput",
+          "type": "date", 
+          "options": { "range": { "from": new Date("2014-05-18"),
+              "to": new Date("2014-06-01") }
+          },
+          "callback": callback
+        },
         //password field
         { "field": "#passwordInput", 
           "type": "password", 
@@ -79,8 +88,7 @@ $(function() {
   }
 
   validForm();
-
-  $("#textInput, #numberInput, #emailInput, #passwordInput, #passwordRepeatInput").keyup(function (){
+  $("#textInput, #numberInput, #emailInput, #dateInput, #passwordInput, #passwordRepeatInput").bind("change keyup", function (){
 
     validForm();
     

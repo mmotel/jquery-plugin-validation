@@ -411,6 +411,93 @@
     });
 ```
 
+## Date validation
+
+```js
+  $('dateFields').valid("date", options, callback);
+```
+
+##### Available `options`:
+
+```js
+  {
+    "range": 
+    {
+      "from": Date,   //inclusie
+      "to": Date    //inclusie
+    },
+    "condition": function //return Boolean
+  }
+```
+
+##### `condition` function:
+
+```js
+  function () {
+    //this contains DOM element
+    return Boolean;
+  }
+```
+
+##### Validation callback:
+
+```js
+  function ( err ) {
+    //this contains DOM element
+    if(err){
+      //do sth with not valid DOM element
+    }
+    else{
+      //do sth with valid DOM element
+    }
+  }
+```
+
+##### `err` object:
+
+```js
+  {
+    "empty": Boolean, //true if DOM element is empty
+    "nad": Boolean, //true if DOM element value is not valid Date
+    "range": 
+    {
+      "from": Boolean,
+      "to": Boolean
+    },
+    "condition": Boolean
+  }
+```
+
+##### Example:
+
+```html
+  <div class="form-group">
+    <label for="exampleInputDate">Date</label>
+    <input type="date" class="form-control" id="dateInput" placeholder="date">
+  </div>
+```
+
+```js
+  $("#dateInput").valid("date", 
+    {     
+      "range":
+      {
+        "from": new Date("2014-05-01"),
+        "to": new Date("2014-06-01")
+      }
+    },
+    function ( err ) {
+      if(err){
+        $(this).parent().addClass("has-error");      
+      }
+      else{
+        $(this).parent().removeClass("has-error");
+        $(this).parent().addClass("has-success");      
+      }
+    };
+```
+
+
 ## Form validation
 
 ```js
@@ -476,6 +563,10 @@
     <input type="email" class="form-control" id="emailInput" placeholder="Email">
   </div>
   <div class="form-group">
+    <label for="exampleInputDate">Date</label>
+    <input type="date" class="form-control" id="dateInput" placeholder="date">
+  </div>
+  <div class="form-group">
     <label for="exampleInputPassword1">Password</label>
     <input type="password" class="form-control" id="passwordInput" placeholder="Passwd">
   </div>
@@ -527,6 +618,15 @@
           "type": "email", 
           "options": {},
           "callback": fieldCallback
+        },
+        //date field
+        {
+          "field": "#dateInput",
+          "type": "date", 
+          "options": { "range": { "from": new Date("2014-05-18"),
+              "to": new Date("2014-06-01") }
+          },
+          "callback": callback
         },
         //password field
         { "field": "#passwordInput", 
