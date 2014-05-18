@@ -8,6 +8,7 @@
 * [Number validation](#number-validation)
 * [Email validation](#email-validation)
 * [Password validation](#password-validation)
+* [Date validation](#date-validation)
 * [Form validation](#form-validation)
 
 #### Live demo:
