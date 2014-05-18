@@ -151,9 +151,6 @@ Available `options`:
   }
 ```
 
-  }
-```
-
 Validation callback:
 
 ```js
