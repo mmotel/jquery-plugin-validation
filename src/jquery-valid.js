@@ -1,6 +1,6 @@
 /*
-  Version: 0.3.0 BETA
-  Release date: 13.05.2014
+  Version: 0.3.2 BETA
+  Release date: 18.05.2014
   Copyright (c) Mateusz Motel 
 */
 
@@ -250,11 +250,9 @@
         var isValid = valid[ method ](this, options);
 
         if(isValid.valid){
-          // options.onValid.call(this, isValid.errType);
           callback.call(this);
         } 
         else {
-          // options.onNotValid.call(this, isValid.errType);
           callback.call(this, isValid.errType);
         }
       });
@@ -272,10 +270,8 @@
       });
 
       if(err){
-        // options.onFormNotValid.call(this);
         callback.call(this, { "form": true });
       } else {
-        // options.onFormValid.call(this);
         callback.call(this);
       }
 
