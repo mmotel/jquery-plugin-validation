@@ -60,6 +60,9 @@ $(function() {
           {
             "min": 8,
             "max": 64
+          },
+        "condition": function () {
+            return $(this).val() !== "test@test.io";
           }
       }, fieldCallback);
 
@@ -81,6 +84,9 @@ $(function() {
           "digit": true,
           "special": true
         },
+        "condition": function () {
+            return $(this).val() !== "P@ssw0rd";
+          }
       },
       fieldCallback);
 

@@ -117,6 +117,7 @@
       return { "valid": !err, "errType": errType };
     },
     "email": function (that, options) {
+      // console.log(options);
       var settings = $.extend(
         {
           "size": 
@@ -133,6 +134,7 @@
           }
         }, 
         options);
+      // console.log(settings);
 
       return valid.text(that, settings);
     },
@@ -200,6 +202,12 @@
             if(! errType.content){ errType.content = {}; }
             errType.content.special = true;
           }        
+        }
+        if(options.condition){
+          if(! options.condition.call(that, {}) ){
+            err = true;
+            errType.condition = true;
+          }
         }
 
       }

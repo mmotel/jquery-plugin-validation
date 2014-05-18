@@ -228,7 +228,17 @@ Available `options`:
     {
       "min": Int,   //default: 5
       "max": Int    //default: 64
-    }
+    },
+    "condition": function //return Boolean
+  }
+```
+
+`condition` function:
+
+```js
+  function () {
+    //this contains DOM element
+    return Boolean;
   }
 ```
 
@@ -256,7 +266,8 @@ Validation callbacks:
       "min": Boolean,
       "max": Boolean
     },
-    "regexp": Boolean
+    "regexp": Boolean,
+    "condition": Boolean
   }
 ```
 
@@ -276,7 +287,10 @@ Example:
       {
         "min": 8,
         "max": 64
-      }
+      },
+      "condition": function () {
+          return $(this).val() !== "test@test.io";
+        }
     },
     function ( err ) {
       if(err){
@@ -310,7 +324,17 @@ Available `options`:
       "big": Boolean,       //default: true
       "digit": Boolean,     //default: true
       "special": Boolean    //default: false
-    }
+    },
+    "condition": function //return Boolean
+  }
+```
+
+`condition` function:
+
+```js
+  function () {
+    //this contains DOM element
+    return Boolean;
   }
 ```
 
@@ -344,7 +368,8 @@ Validation callback:
       "big": Boolean,
       "digit": Boolean,
       "special": Boolean
-    }
+    },
+    "condition": Boolean
   }
 ```
 
@@ -372,6 +397,9 @@ Example:
         "digit": true,
         "special": true
       },
+      "condition": function () {
+          return $(this).val() !== "P@ssw0rd";
+        }
     },
     function ( err ) {
       if(err){
