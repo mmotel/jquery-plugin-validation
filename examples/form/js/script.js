@@ -51,6 +51,20 @@ $(function() {
             { "small": true, "big": true, "digit": true, "special": true },
           },
           "callback": callback
+        },
+        //password field (repeat)
+        { "field": "#passwordRepeatInput", 
+          "type": "password", 
+          "options": 
+          {
+            "size": { "min": 8, "max": 32 }, 
+            "content":
+            { "small": true, "big": true, "digit": true, "special": true },
+            "condition": function () {
+              return $(this).val() === $('#passwordInput').val();  
+            }
+          },
+          "callback": callback
         }
       ]
     },
@@ -66,7 +80,7 @@ $(function() {
 
   validForm();
 
-  $("#textInput, #numberInput, #emailInput, #passwordInput").keyup(function (){
+  $("#textInput, #numberInput, #emailInput, #passwordInput, #passwordRepeatInput").keyup(function (){
 
     validForm();
     

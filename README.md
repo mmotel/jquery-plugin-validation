@@ -479,6 +479,10 @@ Example:
     <label for="exampleInputPassword1">Password</label>
     <input type="password" class="form-control" id="passwordInput" placeholder="Passwd">
   </div>
+  <div class="form-group">
+    <label for="exampleInputPassword2">Repeat password</label>
+    <input type="password" class="form-control" id="passwordRepeatInput" placeholder="Repeat password">
+  </div>
   <button class="btn btn-primary" id="submitBtn">Submit</button>
 </div>
 ```
@@ -533,6 +537,20 @@ Example:
             { "small": true, "big": true, "digit": true, "special": true },
           },
           "callback": fieldCallback
+        },
+        //password field (repeat)
+        { "field": "#passwordRepeatInput", 
+          "type": "password", 
+          "options": 
+          {
+            "size": { "min": 8, "max": 32 }, 
+            "content":
+            { "small": true, "big": true, "digit": true, "special": true },
+            "condition": function () {
+              return $(this).val() === $('#passwordInput').val();  
+            }
+          },
+          "callback": callback
         }
       ]
     },
