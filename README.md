@@ -74,7 +74,7 @@
 
 ```js
   {
-    "empty": Boolean //true if DOM element is empty
+    "empty": Boolean, //true if DOM element is empty
     "size":
     {
       "min": Boolean,
@@ -168,8 +168,8 @@
 
 ```js
   {
-    "empty": Boolean //true if DOM element is empty
-    "nan": Boolean //true if DOM element value is NaN
+    "empty": Boolean, //true if DOM element is empty
+    "nan": Boolean, //true if DOM element value is NaN
     "value":
     {
       "min": Boolean,
@@ -259,7 +259,7 @@
 
 ```js
   {
-    "empty": Boolean //true if DOM element is empty
+    "empty": Boolean, //true if DOM element is empty
     "size":
     {
       "min": Boolean,
@@ -355,7 +355,7 @@
 
 ```js
   {
-    "empty": Boolean //true if DOM element is empty
+    "empty": Boolean, //true if DOM element is empty
     "size":
     {
       "min": Boolean,
