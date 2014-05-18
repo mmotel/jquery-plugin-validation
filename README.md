@@ -481,7 +481,8 @@ Example:
   </div>
   <div class="form-group">
     <label for="exampleInputPassword2">Repeat password</label>
-    <input type="password" class="form-control" id="passwordRepeatInput" placeholder="Repeat password">
+    <input type="password" class="form-control" id="passwordRepeatInput" 
+        placeholder="Repeat password">
   </div>
   <button class="btn btn-primary" id="submitBtn">Submit</button>
 </div>
