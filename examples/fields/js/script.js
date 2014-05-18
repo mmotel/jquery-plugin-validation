@@ -25,6 +25,9 @@ $(function() {
       "regexp": 
         {
           "pat": "^[A-Z]\\w+"
+        },
+      "condition": function () {
+          return $(this).val() !== "Abc";
         }
       },
       fieldCallback);
@@ -41,6 +44,9 @@ $(function() {
           "max": 100 
         }, 
       "type": "Int",
+      "condition": function () {
+          return $(this).val() % 2 === 0;
+        }
       },
       fieldCallback);
 

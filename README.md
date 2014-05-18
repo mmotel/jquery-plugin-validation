@@ -43,7 +43,17 @@ Available `options`:
     {
       "pat": RegExpPattern,
       "mod": RegExpModifiers
-    }
+    },
+    "condition": function //return Boolean
+  }
+```
+
+`condition` function:
+
+```js
+  function () {
+    //this contains DOM element
+    return Boolean;
   }
 ```
 
@@ -71,7 +81,8 @@ Validation callback:
       "min": Boolean,
       "max": Boolean
     },
-    "regexp": Boolean
+    "regexp": Boolean,
+    "condition": Boolean
   }
 ```
 
@@ -95,6 +106,9 @@ Example:
     "regexp": 
       {
         "pat": "^[A-Z]\\w+"
+      },
+    "condition": function () {
+        return $(this).val() !== "Abc";
       }
     },
     function ( err ) {
@@ -124,6 +138,19 @@ Available `options`:
       "max": Int/Float
     },
     "type": "Int"|"Float",
+    "condition": function //return Boolean
+  }
+```
+
+`condition` function:
+
+```js
+  function () {
+    //this contains DOM element
+    return Boolean;
+  }
+```
+
   }
 ```
 
@@ -146,12 +173,14 @@ Validation callback:
 ```js
   {
     "empty": Boolean //true if DOM element is empty
+    "nan": Boolean //true if DOM element value is NaN
     "value":
     {
       "min": Boolean,
       "max": Boolean
     },
-    "type": Boolean
+    "type": Boolean,
+    "condition": Boolean
   }
 ```
 
@@ -173,6 +202,9 @@ Example:
         "max": 100 
       }, 
     "type": "Int",
+    "condition": function () {
+        return $(this).val() % 2 === 0;
+      }
     },
     function ( err ) {
       if(err){

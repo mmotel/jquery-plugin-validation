@@ -51,6 +51,12 @@
           errType.regexp = true;
         }
       }
+      if(options.condition){
+        if(! options.condition.call(that, {}) ){
+          err = true;
+          errType.condition = true;
+        }
+      }
       //console.log(err);
       
       // console.log(errType);
@@ -95,9 +101,16 @@
             // ?
           //}
         }
+        if(options.condition){
+          if(! options.condition.call(that, {}) ){
+            err = true;
+            errType.condition = true;
+          }
+        }
       }
       else {
         err = true;
+        errType.nan = true;
       }
       //console.log(err);
 
