@@ -551,7 +551,7 @@ Example:
               return $(this).val() === $('#passwordInput').val();  
             }
           },
-          "callback": callback
+          "callback": fieldCallback
         }
       ]
     },
