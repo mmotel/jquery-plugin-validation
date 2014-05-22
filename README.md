@@ -26,13 +26,44 @@
 
 ***
 
+
+## Field validation
+
+```js
+  $('fields').valid(type, options, callback);
+```
+
+ Available `types` &amp; `options`:
+
+* [text](#text-validation)
+* [number](#number-validation)
+* [email](#email-validation)
+* [password](#password-validation)
+* [date](#date-validation)
+
+##### Validation callback:
+
+```js
+  function ( err ) {
+    //this contains DOM element
+    if(err){
+      //do sth with not valid DOM element
+    }
+    else{
+      //do sth with valid DOM element
+    }
+  }
+```
+
+***
+
 ## Text validation
 
 ```js
   $('textFields').valid("text", options, callback);
 ```
 
-##### Available `options`:
+ Available `options`:
 
 ```js
   {
@@ -50,7 +81,7 @@
   }
 ```
 
-##### `condition` function:
+ `condition` function:
 
 ```js
   function () {
@@ -59,21 +90,7 @@
   }
 ```
 
-##### Validation callback:
-
-```js
-  function ( err ) {
-    //this contains DOM element
-    if(err){
-      //do sth with not valid DOM element
-    }
-    else{
-      //do sth with valid DOM element
-    }
-  }
-```
-
-##### `err` object:
+ `err` object:
 
 ```js
   {
@@ -88,7 +105,7 @@
   }
 ```
 
-##### Example:
+ Example:
 
 ```html
 <div class="form-group">
@@ -130,7 +147,7 @@
   $('numberFields').valid("number", options, callback);
 ```
 
-##### Available `options`:
+ Available `options`:
 
 ```js
   {
@@ -144,7 +161,7 @@
   }
 ```
 
-##### `condition` function:
+ `condition` function:
 
 ```js
   function () {
@@ -153,21 +170,7 @@
   }
 ```
 
-##### Validation callback:
-
-```js
-  function ( err ) {
-    //this contains DOM element
-    if(err){
-      //do sth with not valid DOM element
-    }
-    else{
-      //do sth with valid DOM element
-    }
-  }
-```
-
-##### `err` object:
+ `err` object:
 
 ```js
   {
@@ -183,7 +186,7 @@
   }
 ```
 
-##### Example:
+ Example:
 
 ```html
 <div class="form-group">
@@ -222,7 +225,7 @@
   $('emailFields').valid("email", options, callback);
 ```
 
-##### Available `options`:
+ Available `options`:
 
 ```js
   {
@@ -235,7 +238,7 @@
   }
 ```
 
-##### `condition` function:
+ `condition` function:
 
 ```js
   function () {
@@ -244,21 +247,7 @@
   }
 ```
 
-##### Validation callbacks:
-
-```js
-  function ( err ) {
-    //this contains DOM element
-    if(err){
-      //do sth with not valid DOM element
-    }
-    else{
-      //do sth with valid DOM element
-    }
-  }
-```
-
-##### `err` object:
+ `err` object:
 
 ```js
   {
@@ -273,7 +262,7 @@
   }
 ```
 
-##### Example:
+ Example:
 
 ```html
 <div class="form-group">
@@ -311,7 +300,7 @@
   $('passwordFields').valid("password", options, callback);
 ```
 
-##### Available `options`:
+ Available `options`:
 
 ```js
   {
@@ -331,7 +320,7 @@
   }
 ```
 
-##### `condition` function:
+ `condition` function:
 
 ```js
   function () {
@@ -340,21 +329,7 @@
   }
 ```
 
-##### Validation callback:
-
-```js
-  function ( err ) {
-    //this contains DOM element
-    if(err){
-      //do sth with not valid DOM element
-    }
-    else{
-      //do sth with valid DOM element
-    }
-  }
-```
-
-##### `err` object:
+ `err` object:
 
 ```js
   {
@@ -375,7 +350,7 @@
   }
 ```
 
-##### Example:
+ Example:
 
 ```html
 <div class="form-group">
@@ -420,7 +395,7 @@
   $('dateFields').valid("date", options, callback);
 ```
 
-##### Available `options`:
+ Available `options`:
 
 ```js
   {
@@ -433,7 +408,7 @@
   }
 ```
 
-##### `condition` function:
+ `condition` function:
 
 ```js
   function () {
@@ -442,21 +417,7 @@
   }
 ```
 
-##### Validation callback:
-
-```js
-  function ( err ) {
-    //this contains DOM element
-    if(err){
-      //do sth with not valid DOM element
-    }
-    else{
-      //do sth with valid DOM element
-    }
-  }
-```
-
-##### `err` object:
+ `err` object:
 
 ```js
   {
@@ -471,7 +432,7 @@
   }
 ```
 
-##### Example:
+ Example:
 
 ```html
   <div class="form-group">
@@ -520,7 +481,7 @@
     callback);
 ```
 
-##### Available `types` &amp; `options`:
+ Available `types` &amp; `options`:
 
 * [text](#text-validation)
 * [number](#number-validation)
@@ -542,7 +503,7 @@
   }
 ```
 
-##### `err` object:
+ `err` object:
 
 ```js
   {
@@ -550,7 +511,7 @@
   }
 ```
 
-##### Example:
+ Example:
 
 ```html
 <div role="form">
