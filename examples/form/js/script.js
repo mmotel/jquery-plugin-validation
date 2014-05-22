@@ -12,89 +12,82 @@ $(function() {
     }
   };
 
-  // var validForm = function () { 
-    $().valid("form", {
-      "fields": [
-        //text field
-        { "field": "#textInput", 
-          "type": "text", 
-          "options": 
-          {
-            "size": { "min": 6, "max": 64 },
-            "regexp": { "pat": "^[A-Z]\\w+" },
-          },
-          "callback": callback
-        },
-        //number field
-        { "field": "#numberInput", 
-          "type": "number", 
-          "options": 
-          {
-            "value": { "min": 10, "max": 100 },
-            "type": "Int",
-          },
-          "callback": callback
-        },
-        //email field
-        { "field": "#emailInput", 
-          "type": "email", 
-          "options": {},
-          "callback": callback
-        },
-        //date field
+  $().valid("form", {
+    "fields": [
+      //text field
+      { "field": "#textInput", 
+        "type": "text", 
+        "options": 
         {
-          "field": "#dateInput",
-          "type": "date", 
-          "options": { "range": { "from": new Date("2014-05-18"),
-              "to": new Date("2014-06-01") }
-          },
-          "callback": callback
+          "size": { "min": 6, "max": 64 },
+          "regexp": { "pat": "^[A-Z]\\w+" },
         },
-        //password field
-        { "field": "#passwordInput", 
-          "type": "password", 
-          "options": 
-          {
-            "size": { "min": 8, "max": 32 }, 
-            "content":
-            { "small": true, "big": true, "digit": true, "special": true },
-          },
-          "callback": callback
+        "callback": callback
+      },
+      //number field
+      { "field": "#numberInput", 
+        "type": "number", 
+        "options": 
+        {
+          "value": { "min": 10, "max": 100 },
+          "type": "Int",
         },
-        //password field (repeat)
-        { "field": "#passwordRepeatInput", 
-          "type": "password", 
-          "options": 
-          {
-            "size": { "min": 8, "max": 32 }, 
-            "content":
-            { "small": true, "big": true, "digit": true, "special": true },
-            "condition": function () {
-              return $(this).val() === $('#passwordInput').val();  
-            }
-          },
-          "callback": callback
-        }
-      ]
-    },
-    function( err ){
-      if(err){
-        $("#submitBtn").attr("disabled", "disabled");
+        "callback": callback
+      },
+      //email field
+      { "field": "#emailInput", 
+        "type": "email", 
+        "options": {},
+        "callback": callback
+      },
+      //date field
+      {
+        "field": "#dateInput",
+        "type": "date", 
+        "options": { "range": { "from": new Date("2014-05-18"),
+            "to": new Date("2014-06-01") }
+        },
+        "callback": callback
+      },
+      //password field
+      { "field": "#passwordInput", 
+        "type": "password", 
+        "options": 
+        {
+          "size": { "min": 8, "max": 32 }, 
+          "content":
+          { "small": true, "big": true, "digit": true, "special": true },
+        },
+        "callback": callback
+      },
+      //password field (repeat)
+      { "field": "#passwordRepeatInput", 
+        "type": "password", 
+        "options": 
+        {
+          "size": { "min": 8, "max": 32 }, 
+          "content":
+          { "small": true, "big": true, "digit": true, "special": true },
+          "condition": function () {
+            return $(this).val() === $('#passwordInput').val();  
+          }
+        },
+        "callback": callback
       }
-      else{
-        $("#submitBtn").removeAttr("disabled");
-      }
-    },
-    {
-      "bind": "change keyup"
-    });
-  // }
-
-  // validForm();
-  // $("#textInput, #numberInput, #emailInput, #dateInput, #passwordInput, #passwordRepeatInput").bind("change keyup", function (){
-
-  //   validForm();
-    
-  // });
+    ]
+  },
+  //form validation callback
+  function( err ){
+    if(err){
+      $("#submitBtn").attr("disabled", "disabled");
+    }
+    else{
+      $("#submitBtn").removeAttr("disabled");
+    }
+  },
+  //trigger object
+  {
+    "bind": "change keyup"
+  });
 
 });

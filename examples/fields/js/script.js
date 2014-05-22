@@ -13,98 +13,81 @@ $(function() {
     }
   }
 
-
-  // $('#textInput').bind("change keyup", function (){
-
-    $("#textInput").valid("text", 
+  $("#textInput").valid("text", 
+    { 
+    "size": 
       { 
-      "size": 
-        { 
-          "min": 2, 
-          "max": 10 
-        }, 
-      "regexp": 
-        {
-          "pat": "^[A-Z]\\w+"
-        },
-      "condition": function () {
-          return $(this).val() !== "Abc";
-        }
-      },
-      fieldCallback, {"bind": "change keyup"});
-
-  // });
-
-  // $('#numberInput').bind("change keyup", function (){
-
-    $("#numberInput").valid("number", 
-      { 
-      "value": 
-        { 
-          "min": 10, 
-          "max": 100 
-        }, 
-      "type": "Int",
-      "condition": function () {
-          return $(this).val() % 2 === 0;
-        }
-      },
-      fieldCallback, {"bind": "change keyup"});
-
-  // });
-
-  // $('#emailInput').bind("change keyup", function (){
-
-    $("#emailInput").valid("email",
+        "min": 2, 
+        "max": 10 
+      }, 
+    "regexp": 
       {
-        "size":
-          {
-            "min": 8,
-            "max": 64
-          },
-        "condition": function () {
-            return $(this).val() !== "test@test.io";
-          }
-      }, fieldCallback, {"bind": "change keyup"});
+        "pat": "^[A-Z]\\w+"
+      },
+    "condition": function () {
+        return $(this).val() !== "Abc";
+      }
+    },
+    fieldCallback, {"bind": "change keyup"});
 
-  // });
 
-  // $('#passwordInput').bind("change keyup", function (){
+  $("#numberInput").valid("number", 
+    { 
+    "value": 
+      { 
+        "min": 10, 
+        "max": 100 
+      }, 
+    "type": "Int",
+    "condition": function () {
+        return $(this).val() % 2 === 0;
+      }
+    },
+    fieldCallback, {"bind": "change keyup"});
 
-    $("#passwordInput").valid("password", 
-      {     
-        "size":
+
+  $("#emailInput").valid("email",
+    {
+      "size":
         {
           "min": 8,
-          "max": 32
-        }, 
-        "content":
-        {
-          "small": true,
-          "big": true,
-          "digit": true,
-          "special": true
+          "max": 64
         },
-        "condition": function () {
-            return $(this).val() !== "P@ssw0rd";
-          }
-      },
-      fieldCallback, {"bind": "change keyup"});
-
-  // });
-
-  // $('#dateInput').bind("change keyup", function (){
-
-    $("#dateInput").valid("date", 
-      {     
-        "range":
-        {
-          "from": new Date("2014-05-18"),
-          "to": new Date("2014-06-01")
+      "condition": function () {
+          return $(this).val() !== "test@test.io";
         }
-      },
-      fieldCallback, {"bind": "change keyup"});
+    }, fieldCallback, {"bind": "change keyup"});
 
-  // });
+
+  $("#passwordInput").valid("password", 
+    {     
+      "size":
+      {
+        "min": 8,
+        "max": 32
+      }, 
+      "content":
+      {
+        "small": true,
+        "big": true,
+        "digit": true,
+        "special": true
+      },
+      "condition": function () {
+          return $(this).val() !== "P@ssw0rd";
+        }
+    },
+    fieldCallback, {"bind": "change keyup"});
+
+
+  $("#dateInput").valid("date", 
+    {     
+      "range":
+      {
+        "from": new Date("2014-05-18"),
+        "to": new Date("2014-06-01")
+      }
+    },
+    fieldCallback, {"bind": "change keyup"});
 
 });

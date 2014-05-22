@@ -673,6 +673,7 @@ Example:
         }
       ]
     },
+    //form validation callback
     function( err ){
       if(err){
         $("#submitBtn").attr("disabled", "disabled");
@@ -681,6 +682,7 @@ Example:
         $("#submitBtn").removeAttr("disabled");
       }
     },
+    //trigger object
     {
       "bind": "change keyup"
     });
