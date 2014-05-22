@@ -4,11 +4,12 @@
 
 #### Features:
 
-* [Text validation](#text-validation)
-* [Number validation](#number-validation)
-* [Email validation](#email-validation)
-* [Password validation](#password-validation)
-* [Date validation](#date-validation)
+* [Field validation](#field-validation)
+    * [Text validation](#text-validation)
+    * [Number validation](#number-validation)
+    * [Email validation](#email-validation)
+    * [Password validation](#password-validation)
+    * [Date validation](#date-validation)
 * [Form validation](#form-validation)
 
 #### Live demo:
@@ -461,6 +462,7 @@
     };
 ```
 
+***
 
 ## Form validation
 
@@ -470,9 +472,9 @@
       "fields":
         [
           { 
-            "field": "textFields", 
-            "type": "text", 
-            "options": textOptions, 
+            "field": "fields", 
+            "type": type, 
+            "options": options, 
             "callback": fieldCallback 
           },
           //etc...  
