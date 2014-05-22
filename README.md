@@ -56,7 +56,7 @@
   }
 ```
 
- `trigger` object:
+##### `trigger` object:
 
 ```js
   {
@@ -554,15 +554,7 @@ Example:
   }
 ```
 
-Contains actions names which will be passed into `$().bind()` method.
-
-Example:
-
-```js
-  {
-    "bind": "keyup change blur"
-  }
-```
+[More.](#trigger-object)
 
  Example:
 
