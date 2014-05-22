@@ -31,7 +31,7 @@
 ## Field validation
 
 ```js
-  $('fields').valid(type, options, callback);
+  $('fields').valid(type, options, callback, trigger);
 ```
 
  Available `types` &amp; `options`:
@@ -53,6 +53,24 @@
     else{
       //do sth with valid DOM element
     }
+  }
+```
+
+##### `trigger` object:
+
+```js
+  {
+    "bind": actions
+  }
+```
+
+Contains actions names which will be passed into `$().bind()` method.
+
+Example:
+
+```js
+  {
+    "bind": "keyup change blur"
   }
 ```
 
@@ -480,7 +498,7 @@
           //etc...  
         ],
     },
-    callback);
+    callback, trigger);
 ```
 
  Available `types` &amp; `options`:
@@ -510,6 +528,24 @@
 ```js
   {
     "form": Boolean //true if form is not valid
+  }
+```
+
+##### `trigger` object:
+
+```js
+  {
+    "bind": actions
+  }
+```
+
+Contains actions names which will be passed into `$().bind()` method.
+
+Example:
+
+```js
+  {
+    "bind": "keyup change blur"
   }
 ```
 

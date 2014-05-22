@@ -286,39 +286,69 @@
 
       return this;
     },
-    'field': function ( method, options, callback ) {
+    'field': function ( method, options, callback, trigger ) {
       //console.log(options);
 
       return this.each(function () {
-        var isValid = valid[ method ](this, options);
+        var doValid = function () { 
+          var isValid = valid[ method ](this, options);
 
-        if(isValid.valid){
-          callback.call(this);
-        } 
-        else {
-          callback.call(this, isValid.errType);
-        }
+          if(isValid.valid){
+            callback.call(this);
+          } 
+          else {
+            callback.call(this, isValid.errType);
+          }
+       }
+
+       if(trigger && trigger.bind){
+        $(this).bind(trigger.bind, function () {
+          doValid.call(this);
+        });
+       }
+
+       doValid.call(this);
+
       });
     },
-    'form': function ( options, callback ) {
+    'form': function ( options, callback, trigger ) {
       //console.log(options);
-      var err = false;
 
-      options.fields.forEach(function( that, id ) {
-        var isValid = valid.fields(that);
+      var doValid = function () {
+        var err = false;
 
-        if(! isValid){
-          err = true;
-        } 
-      });
+        options.fields.forEach(function( that, id ) {
+          var isValid = valid.fields(that);
 
-      if(err){
-        callback.call(this, { "form": true });
-      } else {
-        callback.call(this);
+          if(! isValid){
+            err = true;
+          } 
+        });
+
+        if(err){
+          callback.call(this, { "form": true });
+        } else {
+          callback.call(this);
+        }
       }
 
-      return this;
+
+      var selector = "";
+      for(var i = 0; i < options.fields.length; i++){
+        selector += options.fields[i].field + ", ";
+      }
+      selector = selector.substring(0, selector.length-2);
+      // console.log(selector);
+
+      if(trigger && trigger.bind){
+        $(selector).bind(trigger.bind, function () {
+          doValid.call(this);
+        });
+      }
+
+      doValid.call(this);
+
+      return $(selector);
     }
   };
   

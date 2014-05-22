@@ -3,7 +3,7 @@ $(function() {
 
   var fieldCallback = function ( err ) {
     if(err){
-      console.log(err);
+      // console.log(err);
       if(err.empty) return;
       $(this).parent().addClass("has-error");      
     }
@@ -14,7 +14,7 @@ $(function() {
   }
 
 
-  $('#textInput').bind("change keyup", function (){
+  // $('#textInput').bind("change keyup", function (){
 
     $("#textInput").valid("text", 
       { 
@@ -31,11 +31,11 @@ $(function() {
           return $(this).val() !== "Abc";
         }
       },
-      fieldCallback);
+      fieldCallback, {"bind": "change keyup"});
 
-  });
+  // });
 
-  $('#numberInput').bind("change keyup", function (){
+  // $('#numberInput').bind("change keyup", function (){
 
     $("#numberInput").valid("number", 
       { 
@@ -49,11 +49,11 @@ $(function() {
           return $(this).val() % 2 === 0;
         }
       },
-      fieldCallback);
+      fieldCallback, {"bind": "change keyup"});
 
-  });
+  // });
 
-  $('#emailInput').bind("change keyup", function (){
+  // $('#emailInput').bind("change keyup", function (){
 
     $("#emailInput").valid("email",
       {
@@ -65,11 +65,11 @@ $(function() {
         "condition": function () {
             return $(this).val() !== "test@test.io";
           }
-      }, fieldCallback);
+      }, fieldCallback, {"bind": "change keyup"});
 
-  });
+  // });
 
-  $('#passwordInput').bind("change keyup", function (){
+  // $('#passwordInput').bind("change keyup", function (){
 
     $("#passwordInput").valid("password", 
       {     
@@ -89,11 +89,11 @@ $(function() {
             return $(this).val() !== "P@ssw0rd";
           }
       },
-      fieldCallback);
+      fieldCallback, {"bind": "change keyup"});
 
-  });
+  // });
 
-  $('#dateInput').bind("change keyup", function (){
+  // $('#dateInput').bind("change keyup", function (){
 
     $("#dateInput").valid("date", 
       {     
@@ -103,8 +103,8 @@ $(function() {
           "to": new Date("2014-06-01")
         }
       },
-      fieldCallback);
+      fieldCallback, {"bind": "change keyup"});
 
-  });
+  // });
 
 });

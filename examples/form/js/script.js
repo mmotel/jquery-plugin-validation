@@ -12,7 +12,7 @@ $(function() {
     }
   };
 
-  var validForm = function () { 
+  // var validForm = function () { 
     $().valid("form", {
       "fields": [
         //text field
@@ -84,14 +84,17 @@ $(function() {
       else{
         $("#submitBtn").removeAttr("disabled");
       }
+    },
+    {
+      "bind": "change keyup"
     });
-  }
+  // }
 
-  validForm();
-  $("#textInput, #numberInput, #emailInput, #dateInput, #passwordInput, #passwordRepeatInput").bind("change keyup", function (){
+  // validForm();
+  // $("#textInput, #numberInput, #emailInput, #dateInput, #passwordInput, #passwordRepeatInput").bind("change keyup", function (){
 
-    validForm();
+  //   validForm();
     
-  });
+  // });
 
 });
