@@ -1,6 +1,6 @@
 #  jQuery Plugin: Fields & Forms Validation
 
-#### Current version: `0.3.3 BETA`
+#### Current version: `0.4.0 BETA`
 
 #### Features:
 
@@ -56,7 +56,7 @@
   }
 ```
 
-##### `trigger` object:
+ `trigger` object:
 
 ```js
   {
@@ -79,7 +79,7 @@ Example:
 ## Text validation
 
 ```js
-  $('textFields').valid("text", options, callback);
+  $('textFields').valid("text", options, callback, trigger);
 ```
 
  Available `options`:
@@ -163,7 +163,7 @@ Example:
 ## Number validation
 
 ```js
-  $('numberFields').valid("number", options, callback);
+  $('numberFields').valid("number", options, callback, trigger);
 ```
 
  Available `options`:
@@ -316,7 +316,7 @@ Example:
 ## Password validation
 
 ```js
-  $('passwordFields').valid("password", options, callback);
+  $('passwordFields').valid("password", options, callback, trigger);
 ```
 
  Available `options`:
@@ -411,7 +411,7 @@ Example:
 ## Date validation
 
 ```js
-  $('dateFields').valid("date", options, callback);
+  $('dateFields').valid("date", options, callback, trigger);
 ```
 
  Available `options`:
@@ -531,7 +531,7 @@ Example:
   }
 ```
 
-##### `trigger` object:
+ `trigger` object:
 
 ```js
   {
