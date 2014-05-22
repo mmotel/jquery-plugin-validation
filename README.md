@@ -157,6 +157,9 @@ Example:
         $(this).parent().removeClass("has-error");
         $(this).parent().addClass("has-success");      
       }
+    },
+    {
+      "bind": "change keyup"
     });
 ```
 
@@ -235,13 +238,16 @@ Example:
         $(this).parent().removeClass("has-error");
         $(this).parent().addClass("has-success");      
       }
+    },
+    {
+      "bind": "change keyup"
     });
 ```
 
 ## Email validation
 
 ```js
-  $('emailFields').valid("email", options, callback);
+  $('emailFields').valid("email", options, callback, trigger);
 ```
 
  Available `options`:
@@ -310,6 +316,9 @@ Example:
         $(this).parent().removeClass("has-error");
         $(this).parent().addClass("has-success");      
       }
+    },
+    {
+      "bind": "change keyup"
     });
 ```
 
@@ -405,6 +414,9 @@ Example:
         $(this).parent().removeClass("has-error");
         $(this).parent().addClass("has-success");      
       }
+    },
+    {
+      "bind": "change keyup"
     });
 ```
 
@@ -477,7 +489,10 @@ Example:
         $(this).parent().removeClass("has-error");
         $(this).parent().addClass("has-success");      
       }
-    };
+    },
+    {
+      "bind": "change keyup"
+    });
 ```
 
 ***
@@ -665,5 +680,8 @@ Example:
       else{
         $("#submitBtn").removeAttr("disabled");
       }
+    },
+    {
+      "bind": "change keyup"
     });
 ```
