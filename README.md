@@ -528,7 +528,7 @@ Example:
 
 ```js
   function ( err ) {
-    //this contains DOM element from selector
+    //this contains DOM elements from fields selectors
     if(err){
       //do sth with not valid form
     }
